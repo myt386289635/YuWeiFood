@@ -1,5 +1,8 @@
 package com.example.dllo.yuweifood;
 
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dllo.yuweifood.base.BaseActivity;
 import com.example.dllo.yuweifood.food.FoodFragment;
@@ -22,6 +26,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private TextView mTextView_recommend,mTextView_local,mTextView_food,mTextView_mine;
     private RadioButton[] mRadioButtons;
     private TextView[] mTextViews;
+
+    private Boolean falg = true;//判断是否是第一次点击返回键
 
     @Override
     protected int setLayout() {
@@ -105,4 +111,23 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if(falg){
+            Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            falg = false;
+            mHandler.sendEmptyMessageDelayed(0,3000);//3秒之外回复第一次点击
+        }else {
+            super.onBackPressed();
+        }
+
+    }
+
+    Handler mHandler = new Handler(new Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            falg = true;
+            return false;
+        }
+    });
 }

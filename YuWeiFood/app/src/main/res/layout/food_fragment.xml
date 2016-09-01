@@ -3,6 +3,29 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#88f">
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/black">
+
+        <com.example.dllo.yuweifood.food.SlidingTabLayout
+            android:id="@+id/food_fragment_tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:textViewDefaultColor="@android:color/white"
+            app:textViewFocusColor="#ffa12c"/>
+
+    </LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/foot_fragment_viewPager"/>
 
 </LinearLayout>
