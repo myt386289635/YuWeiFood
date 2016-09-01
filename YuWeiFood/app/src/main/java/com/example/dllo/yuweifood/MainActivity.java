@@ -69,7 +69,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 setSit(0);
                 replaceFragment(new RecommendFragment());
                 break;
-
             case R.id.btn_local:
                 setSit(1);
                 replaceFragment(new LocalFragment());
