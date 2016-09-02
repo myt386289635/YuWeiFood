@@ -8,7 +8,7 @@ import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
 import com.example.dllo.yuweifood.food.attention.AttentFragment;
 import com.example.dllo.yuweifood.food.hot.HotFragment;
-import com.example.dllo.yuweifood.food.move.MoveFragment;
+import com.example.dllo.yuweifood.food.movie.MovieFragment;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class FoodFragment extends BaseFragment {
 
         mFragments.add(new HotFragment());
         mFragments.add(new AttentFragment());
-        mFragments.add(new MoveFragment());
+        mFragments.add(new MovieFragment());
 
         mAdapter.setFragments(mFragments);
         mViewPager.setAdapter(mAdapter);
