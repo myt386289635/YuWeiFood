@@ -12,11 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.yuweifood.R;
-import com.example.dllo.yuweifood.food.attention.AttentBean.DataBean.ListBean.LabelBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**

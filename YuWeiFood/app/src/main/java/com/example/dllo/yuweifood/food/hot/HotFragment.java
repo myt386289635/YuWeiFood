@@ -24,7 +24,7 @@ public class HotFragment extends BaseFragment {
     private boolean mVisible;
     private Overview mRecentsView;
     private HotAdapter mAdapter;
-    private String[] image_head;//防止头像错位
+//    private String[] image_head;//防止头像错位
 
     @Override
     protected int initLayout() {
@@ -48,12 +48,12 @@ public class HotFragment extends BaseFragment {
             @Override
             public void onSuccess(HotBean response) {
 
-                image_head = new String[response.getData().getList().size()];
+//                image_head = new String[response.getData().getList().size()];
                 for (int i = 0; i < response.getData().getList().size(); ++i) {
                     Random random = new Random();
                     random.setSeed(i);
                     models.add(0xffffffff);
-                    image_head[i]= response.getData().getList().get(i).getAuthor().getHeader();
+//                    image_head[i]= response.getData().getList().get(i).getAuthor().getHeader();
                 }
                 mAdapter = new HotAdapter(context, models);
                 mAdapter.setBean(response);
