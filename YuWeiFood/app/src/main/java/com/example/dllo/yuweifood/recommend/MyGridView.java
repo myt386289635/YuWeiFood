@@ -134,52 +134,26 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.util.AttributeSet;
+import android.widget.GridView;
 
-import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
-
-public class ViewPagerHeadAdapter extends PagerAdapter{
-    private Context context;
-    private RecommendBean recommendBean;
-    private ImageView imageView;
-
-
-    public ViewPagerHeadAdapter(Context context) {
-        this.context = context;
+//网格视图
+public class MyGridView extends GridView {
+    public MyGridView(Context context) {
+        super(context);
     }
 
-    public void setRecommendBean(RecommendBean recommendBean) {
-        this.recommendBean = recommendBean;
+    public MyGridView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
+    public MyGridView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     @Override
-    public int getCount() {
-        return Integer.MAX_VALUE;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int expandSpex = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >>2, MeasureSpec.AT_MOST);
+        super.onMeasure(widthMeasureSpec, expandSpex);
     }
 }

@@ -133,13 +133,14 @@ package com.example.dllo.yuweifood.recommend;         /*
                                                         ------- To you.
         */
 
+
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class RecommendBean {
 
 
     private DataBean data;
-
 
     private int is_array;
 
@@ -174,8 +175,6 @@ public class RecommendBean {
 
         public static class ListBean {
             private String type;
-
-
             private List<ContentBean> content;
 
             public String getType() {
@@ -198,83 +197,7 @@ public class RecommendBean {
                 private String title;
                 private String img;
                 private String url;
-
-                private String name,cover;
-                private Long time;
-                private List<Author> authors;
-
-                public List<Author> getAuthors() {
-                    return authors;
-                }
-
-                public void setAuthors(List<Author> authors) {
-                    this.authors = authors;
-                }
-
-                public static class Author{
-                    private String uname,header;
-
-                    public String getUname() {
-                        return uname;
-                    }
-
-                    public void setUname(String uname) {
-                        this.uname = uname;
-                    }
-
-                    public String getHeader() {
-                        return header;
-                    }
-
-                    public void setHeader(String header) {
-                        this.header = header;
-                    }
-                }
-
-
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getCover() {
-                    return cover;
-                }
-
-                public void setCover(String cover) {
-                    this.cover = cover;
-                }
-
-                public Long getTime() {
-                    return time;
-                }
-
-                public void setTime(Long time) {
-                    this.time = time;
-                }
-
-                private String type;
-                private List<ContentBean1> contentBean1;
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public List<ContentBean1> getContentBean1() {
-                    return contentBean1;
-                }
-
-                public void setContentBean1(List<ContentBean1> contentBean1) {
-                    this.contentBean1 = contentBean1;
-                }
+                private String num;
 
                 public String getTitle() {
                     return title;
@@ -299,27 +222,124 @@ public class RecommendBean {
                 public void setUrl(String url) {
                     this.url = url;
                 }
-                public static class ContentBean1{
-                    private String type;
-                    private List<ContentBean2> contentBean2;
 
-                    public String getType() {
-                        return type;
+                private Authors author;
+
+                public Authors getAuthor() {
+                    return author;
+                }
+
+                public void setAuthor(Authors author) {
+                    this.author = author;
+                }
+
+                public static class Authors {
+                    private String uname, header;
+
+                    public String getHeader() {
+                        return header;
                     }
 
-                    public void setType(String type) {
-                        this.type = type;
+                    public void setHeader(String header) {
+                        this.header = header;
                     }
 
-                    public List<ContentBean2> getContentBean2() {
-                        return contentBean2;
+                    public String getUname() {
+                        return uname;
                     }
 
-                    public void setContentBean2(List<ContentBean2> contentBean2) {
-                        this.contentBean2 = contentBean2;
+                    public void setUname(String uname) {
+                        this.uname = uname;
                     }
-                    public static class ContentBean2{
-                        private String name,summary,cover,url;
+                }
+
+                private String id, name, cover, city, time;
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getCover() {
+                    return cover;
+                }
+
+                public void setCover(String cover) {
+                    this.cover = cover;
+                }
+
+                public String getCity() {
+                    return city;
+                }
+
+                public void setCity(String city) {
+                    this.city = city;
+                }
+
+                public String getTime() {
+                    return time;
+                }
+
+                public void setTime(String time) {
+                    this.time = time;
+                }
+
+                public String getNum() {
+                    return num;
+                }
+
+                public void setNum(String num) {
+                    this.num = num;
+                }
+
+
+                public List<Content1> getContent() {
+                    return content;
+                }
+
+                public void setContent1(List<Content1> content1) {
+                    this.content = content1;
+                }
+
+                private List<Content1> content;
+
+                //
+                public static class Content1 {
+                    String type;
+
+
+                    private Content2 content;
+
+                    public Content2 getContent() {
+                        return content;
+                    }
+
+                    public void setContent(Content2 content) {
+                        this.content = content;
+                    }
+
+                    public static class Content2 {
+                        private String type;
+                        private String id, name, summary, cover, url;
+
+                        public String getId() {
+                            return id;
+                        }
+
+                        public void setId(String id) {
+                            this.id = id;
+                        }
 
                         public String getName() {
                             return name;
@@ -353,7 +373,19 @@ public class RecommendBean {
                             this.url = url;
                         }
 
+
                     }
+
+
+                    public String getType() {
+                        return type;
+                    }
+
+                    public void setType(String type) {
+                        this.type = type;
+                    }
+
+
                 }
 
 

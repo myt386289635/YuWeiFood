@@ -134,52 +134,81 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 
-public class ViewPagerHeadAdapter extends PagerAdapter{
+import java.util.List;
+
+
+public class HotCityAdapter extends BaseAdapter{
     private Context context;
     private RecommendBean recommendBean;
-    private ImageView imageView;
 
+    private List<ViewPagerBean> mbean;
 
-    public ViewPagerHeadAdapter(Context context) {
+    public void setMbean(List<ViewPagerBean> mbean) {
+        this.mbean = mbean;
+    }
+
+    public HotCityAdapter(Context context) {
         this.context = context;
     }
 
     public void setRecommendBean(RecommendBean recommendBean) {
         this.recommendBean = recommendBean;
-
     }
 
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+        return mbean.size();
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
+    public Object getItem(int position) {
+        return mbean.get(position);
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager_image_text, parent, false);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
 
+        }
+        viewHolder.text_name.setText(mbean.get(position).getName());
+        viewHolder.text_summary.setText(mbean.get(position).getContent());
+        Picasso.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
+
+
+
+
+        return convertView;
+    }
+    class ViewHolder {
+        private TextView text_name,text_summary;
+        private ImageView image_cover;
+
+        public ViewHolder(View view) {
+            super();
+            text_name = (TextView) view.findViewById(R.id.item_recom_viewpager_text);
+            image_cover = (ImageView) view.findViewById(R.id.item_recom_viewpager_image);
+            text_summary = (TextView) view.findViewById(R.id.item_recom_viewpager_text_summary);
+
+        }
     }
 }

@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#d2d2d0">
+    >
 
     <ListView
         android:id="@+id/list_recommend"

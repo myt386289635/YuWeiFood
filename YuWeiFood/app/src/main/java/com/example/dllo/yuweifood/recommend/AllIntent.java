@@ -133,53 +133,7 @@ package com.example.dllo.yuweifood.recommend;         /*
                                                         ------- To you.
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+public class AllIntent {
+    private static final String TAG = "http://www.youyuwei.com/api/recommend?oauth_version=1.0&oauth_nonce=164eac91-5a91-464e-94c2-a7be0c60507b&oauth_consumer_key=5&device_type=android&screen_width=1080&device_id=08%3A00%3A27%3A4c%3A0a%3A58&ver=6&ywsdk_ver=20140507&sys_ver=4.4.4&ver_code=33&channel_id=yingyongbao&oauth_signature=1eaaVcVDSx%2Fy6pNXXdaskDImlWg%3D&x_auth_mode=client_auth&device_token=AqSjKQzxiUql-xNhXUhJnYyWggMObybW_emSAtg7Z_xS&oauth_signature_method=HMAC-SHA1&oauth_token=0_9837387abc33331ab&open_udid=08%3A00%3A27%3A4c%3A0a%3A58&app_ver=3.1&app_code=com.yuwei.android&oauth_timestamp=1472634081&screen_height=1776";
 
-import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
-
-public class ViewPagerHeadAdapter extends PagerAdapter{
-    private Context context;
-    private RecommendBean recommendBean;
-    private ImageView imageView;
-
-
-    public ViewPagerHeadAdapter(Context context) {
-        this.context = context;
-    }
-
-    public void setRecommendBean(RecommendBean recommendBean) {
-        this.recommendBean = recommendBean;
-
-    }
-
-    @Override
-    public int getCount() {
-        return Integer.MAX_VALUE;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
-    }
 }

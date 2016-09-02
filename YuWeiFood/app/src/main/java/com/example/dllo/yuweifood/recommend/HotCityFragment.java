@@ -133,53 +133,109 @@ package com.example.dllo.yuweifood.recommend;         /*
                                                         ------- To you.
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
+import com.example.dllo.yuweifood.OKHttp.NetTool;
+import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
+import com.example.dllo.yuweifood.base.BaseFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ViewPagerHeadAdapter extends PagerAdapter{
-    private Context context;
+public class HotCityFragment extends BaseFragment{
+
+
+    private MyGridView myGridView;
     private RecommendBean recommendBean;
-    private ImageView imageView;
+    private HotCityAdapter hotCityAdapter;
+    private List<ViewPagerBean> beanList;
+    private static final String All_Url ="http://www.youyuwei.com/api/recommend?oauth_version=1.0&oauth_nonce=1ee184cd-f076-4739-af9d-6a7c3d2d4613&oauth_consumer_key=5&device_type=android&screen_width=1080&device_id=08%3A00%3A27%3A4c%3A0a%3A58&ver=6&ywsdk_ver=20140507&sys_ver=4.4.4&ver_code=33&channel_id=yingyongbao&oauth_signature=9OqlcBsGBHTp9im2szsCW1jlbE0%3D&x_auth_mode=client_auth&device_token=AqSjKQzxiUql-xNhXUhJnYxgyz28bd1b-CmwKtweSkqb&oauth_signature_method=HMAC-SHA1&oauth_token=0_9837387abc33331ab&open_udid=08%3A00%3A27%3A4c%3A0a%3A58&app_ver=3.1&app_code=com.yuwei.android&oauth_timestamp=1472814332&screen_height=1776";
 
-
-    public ViewPagerHeadAdapter(Context context) {
-        this.context = context;
-    }
-
-    public void setRecommendBean(RecommendBean recommendBean) {
-        this.recommendBean = recommendBean;
-
+    @Override
+    protected int initLayout() {
+        return R.layout.item_recom_gridlayout;
     }
 
     @Override
-    public int getCount() {
-        return Integer.MAX_VALUE;
+    protected void initView(View view) {
+        myGridView = (MyGridView) view.findViewById(R.id.item_recom_gridlayout);
+        recommendBean = new RecommendBean();
+        hotCityAdapter = new HotCityAdapter(context);
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
+    protected void initData() {
+
+        final Bundle args = getArguments();
+        final String tag = args.getString("tag");
+
+        NetTool.getInstance().startRequest(All_Url, RecommendBean.class, new onHttpCallBack<RecommendBean>() {
+            @Override
+            public void onSuccess(RecommendBean response) {
+
+                if(tag.equals(response.getData().getList().get(2).getContent().get(0).getTitle())){
+                     beanList = new ArrayList<ViewPagerBean>();
+                     for (int i = 0; i < response.getData().getList().get(2).getContent().get(0).getContent().size(); i++) {
+
+                         beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getSummary()));
+                         hotCityAdapter.setMbean(beanList);
+                         myGridView.setAdapter(hotCityAdapter);
+                     }
+
+                }else if(tag.equals("美食都会")){
+
+                    beanList = new ArrayList<ViewPagerBean>();
+                    for (int i = 0; i < response.getData().getList().get(2).getContent().get(1).getContent().size(); i++) {
+
+                        beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(1).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(1).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(1).getContent().get(i).getContent().getSummary()));
+                        hotCityAdapter.setMbean(beanList);
+                        myGridView.setAdapter(hotCityAdapter);
+                    }
+
+                }else if(tag.equals("海鲜盛宴")){
+
+                    beanList = new ArrayList<ViewPagerBean>();
+                    for (int i = 0; i < response.getData().getList().get(2).getContent().get(2).getContent().size(); i++) {
+
+                        beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(2).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(2).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(2).getContent().get(i).getContent().getSummary()));
+                        hotCityAdapter.setMbean(beanList);
+                        myGridView.setAdapter(hotCityAdapter);
+                    }
+
+                }else if(tag.equals("小吃天堂")){
+
+                    beanList = new ArrayList<ViewPagerBean>();
+                    for (int i = 0; i < response.getData().getList().get(2).getContent().get(3).getContent().size(); i++) {
+
+                        beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(3).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(3).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(3).getContent().get(i).getContent().getSummary()));
+                        hotCityAdapter.setMbean(beanList);
+                        myGridView.setAdapter(hotCityAdapter);
+                    }
+
+                }else if(tag.equals("当季最热")){
+
+                    beanList = new ArrayList<ViewPagerBean>();
+                    for (int i = 0; i < response.getData().getList().get(2).getContent().get(4).getContent().size(); i++) {
+
+                        beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(4).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(4).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(4).getContent().get(i).getContent().getSummary()));
+                        hotCityAdapter.setMbean(beanList);
+                        myGridView.setAdapter(hotCityAdapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
+
     }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
+    public static HotCityFragment newInstance(int position,String tag){
+        Bundle args = new Bundle();
+        args.putString("tag", tag);
+        HotCityFragment fragment = new HotCityFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 }

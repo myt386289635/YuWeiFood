@@ -191,12 +191,10 @@ public class RecommendAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Picasso.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getCover()).into(viewHolder.iv_cover);
-        String time = simpleDateFormat.format(new Date(recommendBean.getData().getList().get(3).getContent().get(position).getTime()));
-        viewHolder.tv_time.setText(time);
+//        String time = simpleDateFormat.format(new Date(recommendBean.getData().getList().get(3).getContent().get(position).getTime()));
+//        viewHolder.tv_time.setText(time);
         viewHolder.tv_title.setText(recommendBean.getData().getList().get(3).getContent().get(position).getName());
-//        Picasso.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getAuthors().get(position).getHeader()).into(viewHolder.iv_header);
-//        viewHolder.tv_uname.setText(recommendBean.getData().getList().get(3).getContent().get(position).getAuthors().get(position).getUname());
-
+        viewHolder.tv_uname.setText(recommendBean.getData().getList().get(3).getContent().get(position).getAuthor().getUname());
 
         return convertView;
 

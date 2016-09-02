@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+
+
+    >
     <TextView
         android:id="@+id/text_addhead"
         android:text="精选美食游记"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:gravity="center"
         android:textColor="#ffa12c"
         android:layout_width="match_parent"
