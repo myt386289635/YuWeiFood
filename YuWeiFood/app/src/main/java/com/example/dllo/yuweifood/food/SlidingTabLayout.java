@@ -312,6 +312,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
             if (mViewPagerPageChangeListener != null) {
                 mViewPagerPageChangeListener.onPageSelected(position);
             }
+
+            for (int i = 0; i < mTabStrip.getChildCount(); i++){
+                if (position == i) {
+                    mTextViews[i].setTextColor(0xffffa12c);
+                } else {
+                    mTextViews[i].setTextColor(0xffffffff);
+                }
+            }
         }
 
     }

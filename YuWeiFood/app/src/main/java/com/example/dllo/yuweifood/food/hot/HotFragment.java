@@ -1,22 +1,18 @@
 package com.example.dllo.yuweifood.food.hot;
 
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.dllo.yuweifood.OKHttp.NetTool;
+import com.example.dllo.yuweifood.OKHttp.Values;
+import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
 import com.wirelesspienetwork.overview.misc.Utilities;
-import com.wirelesspienetwork.overview.model.OverviewAdapter;
-import com.wirelesspienetwork.overview.model.ViewHolder;
 import com.wirelesspienetwork.overview.views.Overview;
-import com.wirelesspienetwork.overview.views.Overview.RecentsViewCallbacks;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,6 +24,7 @@ public class HotFragment extends BaseFragment {
     private boolean mVisible;
     private Overview mRecentsView;
     private HotAdapter mAdapter;
+    private String[] image_head;//防止头像错位
 
     @Override
     protected int initLayout() {
@@ -41,36 +38,34 @@ public class HotFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        mRecentsView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-
-
-        try {
-            //设置阴影效果
-            Utilities.setShadowProperty("ambientRatio", String.valueOf(1.5f));
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
 
         mVisible = true;
 
-        ArrayList<Integer> models = new ArrayList<>();
-        for(int i = 0; i < 10; ++i)
-        {
-            Random random = new Random();
-            random.setSeed(i);
-            models.add(0xffffffff);
-        }
-        mAdapter = new HotAdapter(context,models);
-        mRecentsView.setTaskStack(mAdapter);
+        final ArrayList<Integer> models = new ArrayList<>();
+
+
+        NetTool.getInstance().startRequest(Values.FoodFragment_str, HotBean.class, new onHttpCallBack<HotBean>() {
+            @Override
+            public void onSuccess(HotBean response) {
+
+                image_head = new String[response.getData().getList().size()];
+                for (int i = 0; i < response.getData().getList().size(); ++i) {
+                    Random random = new Random();
+                    random.setSeed(i);
+                    models.add(0xffffffff);
+                    image_head[i]= response.getData().getList().get(i).getAuthor().getHeader();
+                }
+                mAdapter = new HotAdapter(context, models);
+                mAdapter.setBean(response);
+//                mAdapter.setImage_head(image_head);
+                mRecentsView.setTaskStack(mAdapter);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
 
     }
 
