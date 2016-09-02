@@ -5,8 +5,29 @@
               android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
+
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:id="@+id/item_recom_view_pager"
         />
+    <LinearLayout
+        android:background="#b3afaf"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:background="@mipmap/search_icon_home"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:text="寻找你想去吃的地方"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </LinearLayout>

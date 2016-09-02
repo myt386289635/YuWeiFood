@@ -134,53 +134,52 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
 
-public class ViewPagerHeadAdapter extends PagerAdapter{
+public class HotCityViewPagerAdapter extends FragmentPagerAdapter {
     private Context context;
     private RecommendBean recommendBean;
-    private ImageView imageView;
+    private FragmentManager fm;
 
 
-    public ViewPagerHeadAdapter(Context context) {
+    private String [] title={"老饕最爱","美食都会","海鲜盛宴","小吃天堂","当季最热"};
+
+    public HotCityViewPagerAdapter(FragmentManager fm, Context context) {
+        super(fm);
         this.context = context;
+        this.fm = fm;
     }
 
     public void setRecommendBean(RecommendBean recommendBean) {
         this.recommendBean = recommendBean;
+    }
 
+    public HotCityViewPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    public void setTitle(String[] title) {
+        this.title = title;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+
+
+
+         return HotCityFragment.newInstance(position,title[position]);
     }
 
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+        return title.length;
     }
-
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
+    public CharSequence getPageTitle(int position) {
+        return title[position];
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        //每次都得加载一个行布局
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
-    }
 }

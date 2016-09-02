@@ -133,54 +133,40 @@ package com.example.dllo.yuweifood.recommend;         /*
                                                         ------- To you.
         */
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
-
-public class ViewPagerHeadAdapter extends PagerAdapter{
-    private Context context;
-    private RecommendBean recommendBean;
-    private ImageView imageView;
 
 
-    public ViewPagerHeadAdapter(Context context) {
-        this.context = context;
+public class ViewPagerBean {
+
+    private  String image;
+    private String name,content;
+
+    public ViewPagerBean(String image, String name, String content) {
+        this.image = image;
+        this.name = name;
+        this.content = content;
     }
 
-    public void setRecommendBean(RecommendBean recommendBean) {
-        this.recommendBean = recommendBean;
-
+    public String getImage() {
+        return image;
     }
 
-    @Override
-    public int getCount() {
-        return Integer.MAX_VALUE;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view ==object;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        //每次都得加载一个行布局
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
-        imageView = (ImageView) view.findViewById(R.id.item_imageView);
-
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
-        container.addView(view);
-        return view;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public String getContent() {
+        return content;
+    }
 
+    public void setContent(String content) {
+        this.content = content;
     }
 }
