@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginBottom="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:id="@+id/attent_fragment_item_image"/>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@mipmap/daren_v"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignRight="@id/attent_fragment_item_image"
+            android:layout_alignBottom="@id/attent_fragment_item_image"/>
+
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/attent_fragment_item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="lalalal"
+            android:textSize="13sp"
+            android:id="@+id/attent_fragment_item_name"/>
+
+
+        <TextView
+            android:id="@+id/attent_fragment_item_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lalala"
+            android:textColor="#c1c1c1"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/attent_fragment_item_image"
+            android:layout_marginLeft="10dp"
+            android:textSize="11sp"
+            android:layout_below="@id/attent_fragment_item_name"/>
+
+        <TextView
+            android:id="@+id/attent_fragment_item_mine"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="10sp"
+            android:textColor="#c1c1c1"
+            android:text="lalala"
+            android:layout_toRightOf="@id/attent_fragment_item_name"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+
+            android:id="@+id/attent_fragment_item_symbol_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c1c1c1"
+            android:textSize="9sp"
+            android:layout_toRightOf="@id/attent_fragment_item_image"
+            android:text="wowowo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/attent_fragment_item_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/attent_fragment_item_symbol_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c1c1c1"
+            android:textSize="9sp"
+            android:layout_toRightOf="@id/attent_fragment_item_symbol_first"
+            android:text="wowowo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/attent_fragment_item_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/attent_fragment_item_symbol_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c1c1c1"
+            android:textSize="9sp"
+            android:layout_toRightOf="@id/attent_fragment_item_symbol_two"
+            android:text="wowowo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/attent_fragment_item_content"
+            android:layout_marginTop="5dp"/>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/daren_guanzhu"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加关注"
+                android:textColor="#ffa12c"
+                android:textSize="10sp"/>
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#c1c1c1"
+            android:layout_below="@id/attent_fragment_item_image"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

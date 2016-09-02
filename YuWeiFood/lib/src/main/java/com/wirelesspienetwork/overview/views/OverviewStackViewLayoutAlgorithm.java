@@ -53,7 +53,7 @@ public class OverviewStackViewLayoutAlgorithm {
     public void computeRects(int windowWidth, int windowHeight, Rect taskStackBounds) {
         // Compute the stack rects
         //改动显示位置
-        mViewRect.set(0, 0 , windowWidth, windowHeight);
+        mViewRect.set(0, 0 , windowWidth, windowHeight+250);
         mStackRect.set(taskStackBounds);
         mStackVisibleRect.set(taskStackBounds);
         mStackVisibleRect.bottom = mViewRect.bottom;

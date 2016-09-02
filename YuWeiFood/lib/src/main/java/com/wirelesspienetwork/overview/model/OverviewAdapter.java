@@ -17,6 +17,7 @@
 package com.wirelesspienetwork.overview.model;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.wirelesspienetwork.overview.misc.OverviewConfiguration;
@@ -136,6 +137,7 @@ public abstract class OverviewAdapter<VH extends ViewHolder, Model extends Objec
 
     public final void bindViewHolder(VH vh, int position) {
         vh.model = mItems.get(position);
+//        Log.d("OverviewAdapter", "position:" + position);
         onBindViewHolder(vh,position);
     }
 }

@@ -170,6 +170,7 @@ public class ViewPagerHeadAdapter extends PagerAdapter{
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        //每次都得加载一个行布局
         View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
         imageView = (ImageView) view.findViewById(R.id.item_imageView);
 

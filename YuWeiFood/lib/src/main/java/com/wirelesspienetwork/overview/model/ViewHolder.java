@@ -1,11 +1,17 @@
 package com.wirelesspienetwork.overview.model;
 
+import android.util.SparseArray;
 import android.view.View;
 
+import com.wirelesspienetwork.overview.R;
 import com.wirelesspienetwork.overview.views.OverviewCard;
 
 public class ViewHolder<V extends View, Model extends Object>
 {
+    //SparseArray 是 Integer 到 Object 的一个映射，可以在某些场合替换HashMap<Integer,<E>>
+    //括号里只设置 Object
+    private SparseArray<View> views;
+
     public final V itemView;
     public Model model;
 
@@ -17,6 +23,16 @@ public class ViewHolder<V extends View, Model extends Object>
     public ViewHolder(V view)
     {
         this.itemView = view;
+        views = new SparseArray<>();
+    }
+
+    public <T extends View> T getView(int id){
+        T t = (T) views.get(id);
+        if (t == null){
+            t = (T) itemView.findViewById(id);
+            views.put(id,t);
+        }
+        return t;
     }
 
     public void setPosition(int position) {

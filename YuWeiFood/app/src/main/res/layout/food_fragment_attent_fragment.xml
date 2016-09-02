@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#f8f">
+              android:background="@android:color/black"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/attent_fragment_mLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="去余味大人榜看看更多的达人把!"
+            android:textColor="#ffa12c"
+            android:textSize="13sp"/>
+
+        <ImageView
+            android:id="@+id/attent_fragment_x"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/note_x"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/attent_fragment_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"/>
 
 </LinearLayout>
