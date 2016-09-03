@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_margin="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    >
+
+    <EditText
+        android:cursorVisible="true"
+        android:id="@+id/et_id"
+        android:hint="请输入邮箱/手机号"
+        android:padding="15dp"
+        android:textColor="#3d3b3b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/et_pass"
+        android:hint="请输入4-16位字母和数字"
+        android:padding="15dp"
+        android:textColor="#3d3b3b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:text="注册"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

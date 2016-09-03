@@ -144,7 +144,11 @@ public class ViewPagerBean {
         this.image = image;
         this.name = name;
         this.content = content;
+
+
     }
+
+
 
     public String getImage() {
         return image;

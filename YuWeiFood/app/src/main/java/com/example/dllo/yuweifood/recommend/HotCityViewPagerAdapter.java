@@ -145,7 +145,7 @@ public class HotCityViewPagerAdapter extends FragmentPagerAdapter {
     private FragmentManager fm;
 
 
-    private String [] title={"老饕最爱","美食都会","海鲜盛宴","小吃天堂","当季最热"};
+    private String[] title = {"老饕最爱", "美食都会", "海鲜盛宴", "小吃天堂", "当季最热"};
 
     public HotCityViewPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -169,14 +169,14 @@ public class HotCityViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
 
-
-         return HotCityFragment.newInstance(position,title[position]);
+        return HotCityFragment.newInstance(position, title[position]);
     }
 
     @Override
     public int getCount() {
         return title.length;
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         return title[position];

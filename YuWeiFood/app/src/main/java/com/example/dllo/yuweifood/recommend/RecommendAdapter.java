@@ -142,11 +142,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class RecommendAdapter extends BaseAdapter{
     private RecommendBean recommendBean;
@@ -190,12 +194,13 @@ public class RecommendAdapter extends BaseAdapter{
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Picasso.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getCover()).into(viewHolder.iv_cover);
-//        String time = simpleDateFormat.format(new Date(recommendBean.getData().getList().get(3).getContent().get(position).getTime()));
-//        viewHolder.tv_time.setText(time);
+        Glide.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getCover()).into(viewHolder.iv_cover);
+        String time = simpleDateFormat.format(new Date(recommendBean.getData().getList().get(3).getContent().get(position).getTime()));
+        viewHolder.tv_time.setText(time);
+
         viewHolder.tv_title.setText(recommendBean.getData().getList().get(3).getContent().get(position).getName());
         viewHolder.tv_uname.setText(recommendBean.getData().getList().get(3).getContent().get(position).getAuthor().getUname());
-
+        Glide.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getAuthor().getHeader()).bitmapTransform(new CropCircleTransformation(context)).into(viewHolder.iv_header);
         return convertView;
 
     }

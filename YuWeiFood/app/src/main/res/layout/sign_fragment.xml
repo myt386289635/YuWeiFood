@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:background="@mipmap/account_title"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/sign_tablayout"
+            android:paddingTop="-60dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+    </FrameLayout>
+     <android.support.v4.view.ViewPager
+
+        android:id="@+id/sign_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"/>
+    <TextView
+        android:textSize="20dp"
+        android:text="说明:注册/登录代表您已同意"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+
+</LinearLayout>

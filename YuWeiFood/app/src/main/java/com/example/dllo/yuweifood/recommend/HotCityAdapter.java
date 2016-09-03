@@ -134,6 +134,7 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,7 +149,6 @@ import java.util.List;
 
 public class HotCityAdapter extends BaseAdapter{
     private Context context;
-    private RecommendBean recommendBean;
 
     private List<ViewPagerBean> mbean;
 
@@ -158,10 +158,6 @@ public class HotCityAdapter extends BaseAdapter{
 
     public HotCityAdapter(Context context) {
         this.context = context;
-    }
-
-    public void setRecommendBean(RecommendBean recommendBean) {
-        this.recommendBean = recommendBean;
     }
 
     @Override
@@ -196,7 +192,6 @@ public class HotCityAdapter extends BaseAdapter{
 
 
 
-
         return convertView;
     }
     class ViewHolder {
@@ -205,6 +200,7 @@ public class HotCityAdapter extends BaseAdapter{
 
         public ViewHolder(View view) {
             super();
+
             text_name = (TextView) view.findViewById(R.id.item_recom_viewpager_text);
             image_cover = (ImageView) view.findViewById(R.id.item_recom_viewpager_image);
             text_summary = (TextView) view.findViewById(R.id.item_recom_viewpager_text_summary);

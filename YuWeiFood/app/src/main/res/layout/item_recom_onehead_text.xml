@@ -7,11 +7,30 @@
 
     >
     <TextView
+
         android:id="@+id/text_addhead"
         android:text="精选美食游记"
         android:textSize="20dp"
-        android:gravity="center"
         android:textColor="#ffa12c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+    <!--<View-->
+
+           <!--android:layout_height="2dp"-->
+           <!--android:layout_width="80dp"-->
+           <!--android:background="#ffa12c"-->
+           <!--android:layout_centerVertical="true"-->
+           <!--android:layout_toStartOf="@+id/text_addhead"/>-->
+
+    <!--<View-->
+
+        <!--android:layout_height="2dp"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:background="#ffa12c"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toEndOf="@+id/text_addhead"/>-->
 </LinearLayout>

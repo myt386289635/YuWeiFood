@@ -176,6 +176,15 @@ public class RecommendBean {
         public static class ListBean {
             private String type;
             private List<ContentBean> content;
+            private String title;
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
 
             public String getType() {
                 return type;
@@ -253,7 +262,16 @@ public class RecommendBean {
                     }
                 }
 
-                private String id, name, cover, city, time;
+                private String id, name, cover, city;
+                private Long time;
+
+                public Long getTime() {
+                    return time;
+                }
+
+                public void setTime(Long time) {
+                    this.time = time;
+                }
 
                 public String getId() {
                     return id;
@@ -287,13 +305,7 @@ public class RecommendBean {
                     this.city = city;
                 }
 
-                public String getTime() {
-                    return time;
-                }
 
-                public void setTime(String time) {
-                    this.time = time;
-                }
 
                 public String getNum() {
                     return num;
