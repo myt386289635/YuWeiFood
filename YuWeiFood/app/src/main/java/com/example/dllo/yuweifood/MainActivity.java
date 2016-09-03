@@ -1,18 +1,21 @@
 package com.example.dllo.yuweifood;
 
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.dllo.yuweifood.base.BaseActivity;
 import com.example.dllo.yuweifood.food.FoodFragment;
@@ -29,6 +32,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     private Boolean falg = true;//判断是否是第一次点击返回键
 
+    private VideoView mVideoView;
+    private Boolean playing = true;//是否开启线程
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private Boolean messageFlag = true; //判断消息有没有发送过
+
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
@@ -44,12 +53,16 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         mTextView_local = (TextView) findViewById(R.id.btn_local_text);
         mTextView_food = (TextView) findViewById(R.id.btn_food_text);
         mTextView_mine = (TextView) findViewById(R.id.btn_mine_text);
+        mVideoView = (VideoView) findViewById(R.id.videoView);
 
     }
 
     @Override
     protected void initDate() {
 
+        mVideoView.setVisibility(View.GONE);
+        mSharedPreferences = getSharedPreferences("videoview",MODE_PRIVATE);
+        mEditor = mSharedPreferences.edit();
         mRadioButton_recommend.setOnClickListener(this);
         mRadioButton_food.setOnClickListener(this);
         mRadioButton_mine.setOnClickListener(this);
@@ -59,7 +72,48 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         mTextViews  = new TextView[]{mTextView_recommend, mTextView_local, mTextView_food, mTextView_mine};
 
         replaceFragment(new RecommendFragment());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while (playing){
+
+//                    Log.d("MainActivity", "++");
+                    //开启小窗口播放
+//                    Log.d("MainActivity",""+ mSharedPreferences.getBoolean("play", false));
+                    if(mSharedPreferences.getBoolean("play",false)){
+//                        Log.d("MainActivity", "...");
+                        if(messageFlag){
+                            hander.sendEmptyMessage(0);
+                            messageFlag = false;
+                        }
+
+                    }
+                }
+
+            }
+        }).start();
+
     }
+
+    Handler hander = new Handler(new Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            Log.d("MainActivity", "mmmm");
+            if(msg.what == 0){
+                mVideoView.setVisibility(View.VISIBLE);
+                Uri uri = Uri.parse(mSharedPreferences.getString("url",""));
+                mVideoView.setVideoURI(uri);
+                mVideoView.setMediaController(new MediaController(MainActivity.this));
+                mVideoView.requestFocus();
+                mVideoView.start();
+            }
+
+            return false;
+        }
+    });
+
 
     @Override
     public void onClick(View v) {
@@ -119,7 +173,32 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }else {
             super.onBackPressed();
         }
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mEditor.putBoolean("play",false);
+        mEditor.putString("url","");
+        mEditor.commit();
+        if(mVideoView.isPlaying()){
+            mVideoView.stopPlayback();
+            mVideoView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("---", "++");
+        playing = false;
+        mEditor.putBoolean("play",false);
+        mEditor.putString("url","");
+        mEditor.commit();
+        if(mVideoView.isPlaying()){
+            mVideoView.stopPlayback();
+            mVideoView.setVisibility(View.GONE);
+        }
     }
 
     Handler mHandler = new Handler(new Callback() {
