@@ -79,11 +79,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
                 while (playing){
 
-//                    Log.d("MainActivity", "++");
-                    //开启小窗口播放
-//                    Log.d("MainActivity",""+ mSharedPreferences.getBoolean("play", false));
                     if(mSharedPreferences.getBoolean("play",false)){
-//                        Log.d("MainActivity", "...");
+
                         if(messageFlag){
                             hander.sendEmptyMessage(0);
                             messageFlag = false;
@@ -100,7 +97,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     Handler hander = new Handler(new Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            Log.d("MainActivity", "mmmm");
             if(msg.what == 0){
                 mVideoView.setVisibility(View.VISIBLE);
                 Uri uri = Uri.parse(mSharedPreferences.getString("url",""));
@@ -175,6 +171,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -183,8 +180,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         mEditor.commit();
         if(mVideoView.isPlaying()){
             mVideoView.stopPlayback();
-            mVideoView.setVisibility(View.GONE);
         }
+        mVideoView.setVisibility(View.GONE);
     }
 
     @Override
