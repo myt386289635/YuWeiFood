@@ -89,7 +89,7 @@ public class MovieAdapter extends BaseAdapter {
         }else {
 
             if(holder.mVideoView.isPlaying()){
-                Log.d("----", "++");
+//                Log.d("----", "++");
                 mEditor.putBoolean("play",true);
                 mEditor.commit();
             }

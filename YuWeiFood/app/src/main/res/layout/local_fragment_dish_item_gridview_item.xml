@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/local_fragment_dish_item_gridview_item_layout"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:id="@+id/local_fragment_dish_item_gridview_item_image"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="啦啦啦啦"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/local_fragment_dish_item_gridview_item_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#c1c1c1"
+        android:textSize="11dp"
+        android:text="lallaa"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:id="@+id/local_fragment_dish_item_gridview_item_content"/>
+</LinearLayout>

@@ -171,31 +171,25 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
     }
 
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        mEditor.putBoolean("play",false);
-        mEditor.putString("url","");
-        mEditor.commit();
-        if(mVideoView.isPlaying()){
-            mVideoView.stopPlayback();
-        }
-        mVideoView.setVisibility(View.GONE);
-    }
-
     @Override
     protected void onStop() {
         super.onStop();
         Log.d("---", "++");
-        playing = false;
         mEditor.putBoolean("play",false);
         mEditor.putString("url","");
         mEditor.commit();
         if(mVideoView.isPlaying()){
             mVideoView.stopPlayback();
-            mVideoView.setVisibility(View.GONE);
+
         }
+        mVideoView.setVisibility(View.GONE);
+        messageFlag = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        playing = false;
     }
 
     Handler mHandler = new Handler(new Callback() {

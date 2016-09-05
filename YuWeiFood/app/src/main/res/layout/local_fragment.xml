@@ -1,8 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:background="#f88">
+              android:layout_height="match_parent">
 
-</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/local_fragment_recyclerView"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/local_fragment_head_local"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大连"
+            android:textColor="#ffffff"/>
+
+        <ImageView
+            android:id="@+id/local_fragment_head_cancle"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/local_fragment_head_local"
+            android:layout_marginRight="15dp"
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@mipmap/city_choose_down"/>
+
+        <TextView
+            android:id="@+id/local_fragment_head_langurage"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="翻译"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="40dp"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@mipmap/icon_search_home"
+            android:gravity="center_vertical"
+            android:layout_alignLeft="@id/local_fragment_head_cancle"
+            android:layout_alignRight="@id/local_fragment_head_langurage"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="13sp"
+            android:background="@drawable/local_sreach_background"
+            android:textColor="#ffffff"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="搜索目的地/餐厅/菜品/食记/用户"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

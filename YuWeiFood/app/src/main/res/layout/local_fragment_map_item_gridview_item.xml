@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:id="@+id/local_fragment_map_item_gridView_item_image"/>
+
+    <ImageView
+        android:id="@+id/citymap_1"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/local_fragment_map_item_gridView_item_image"/>
+
+    <TextView
+        android:layout_toRightOf="@id/citymap_1"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="14sp"
+        android:id="@+id/local_fragment_map_item_gridView_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="我是"/>
+
+    <TextView
+        android:id="@+id/local_fragment_map_item_gridView_item_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:textColor="#c1c1c1"
+        android:textSize="12dp"
+        android:layout_below="@id/citymap_1"
+        android:layout_toRightOf="@id/local_fragment_map_item_gridView_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0元/人         西餐"/>
+
+    <TextView
+        android:id="@+id/local_fragment_map_item_gridView_item_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lalalalKm"
+        android:textSize="12dp"
+        android:textColor="#c1c1c1"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#c1c1c1"
+        android:layout_below="@id/local_fragment_map_item_gridView_item_image"/>
+</RelativeLayout>
