@@ -1,4 +1,4 @@
-package com.example.dllo.yuweifood.mine;         /*
+package com.example.dllo.yuweifood.mine.collection;         /*
                                 MMMMM
                                   MMMMMM
                                     MMMMMMM
@@ -133,48 +133,22 @@ package com.example.dllo.yuweifood.mine;         /*
                                                         ------- To you.
         */
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseActivity;
 
-import java.util.ArrayList;
-
-public class SignActivity extends BaseActivity{
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private SignAdapter signAdapter;
-
-    private ArrayList<Fragment> list;
-
+public class CollectionActivity extends BaseActivity {
     @Override
     protected int setLayout() {
-        return R.layout.sign_fragment;
+        return R.layout.activity_collection;
     }
 
     @Override
     protected void initView() {
 
-        viewPager = (ViewPager) findViewById(R.id.sign_fragment);
-        tabLayout = (TabLayout) findViewById(R.id.sign_tablayout);
     }
 
     @Override
     protected void initDate() {
 
-
-        list = new ArrayList<>();
-
-        list.add(new RegisterFragment());
-        list.add(new LoginFragment());
-        signAdapter = new SignAdapter(getSupportFragmentManager(),list);
-
-        viewPager.setAdapter(signAdapter);
-
-        tabLayout.setupWithViewPager(viewPager);
-
     }
-
-
 }

@@ -7,25 +7,54 @@
     >
 
     <EditText
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textCursorDrawable="@null"
+        android:background="@null"
         android:cursorVisible="true"
         android:id="@+id/et_id"
         android:hint="请输入邮箱/手机号"
         android:padding="15dp"
-        android:textColor="#3d3b3b"
+        android:textColorHint="#797777"
+        android:textColor="#797777"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#e1dcdc" />
     <EditText
+        android:textSize="15sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textCursorDrawable="@null"
+        android:background="@null"
         android:id="@+id/et_pass"
         android:hint="请输入4-16位字母和数字"
         android:padding="15dp"
-        android:textColor="#3d3b3b"
+        android:textColor="#797777"
+        android:textColorHint="#797777"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#e1dcdc" />
 
 
     <Button
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/buttonstyle"
         android:layout_marginTop="30dp"
         android:text="注册"
+        android:textColor="#ffa13c"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
