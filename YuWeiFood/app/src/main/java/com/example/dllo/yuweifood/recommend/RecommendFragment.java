@@ -6,7 +6,10 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.dllo.yuweifood.OKHttp.NetTool;
 import com.example.dllo.yuweifood.OKHttp.Values;
 import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
@@ -50,6 +53,7 @@ public class RecommendFragment extends BaseFragment {
         viewPager2 = (ViewPager) view3.findViewById(R.id.item_recom_view_pager_two);
         viewPager = (ViewPager) view2.findViewById(R.id.item_recom_view_pager);
 
+
         //头布局
         listView.addHeaderView(view2);
         listView.addHeaderView(view3);
@@ -67,8 +71,6 @@ public class RecommendFragment extends BaseFragment {
         hotCityViewPagerAdapter = new HotCityViewPagerAdapter(getChildFragmentManager());
         recommendAdapter = new RecommendAdapter(context);
 
-
-
         NetTool.getInstance().startRequest(Values.RecommendFragment_All_Intent, RecommendBean.class, new onHttpCallBack<RecommendBean>() {
             @Override
             public void onSuccess(RecommendBean response) {
@@ -77,15 +79,35 @@ public class RecommendFragment extends BaseFragment {
                 viewPager.setAdapter(viewPagerHeadAdapter);
                 LunBo();
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
+
+        NetTool.getInstance().startRequest(Values.RecommendFragment_All_Intent, RecommendBean.class, new onHttpCallBack<RecommendBean>() {
+            @Override
+            public void onSuccess(RecommendBean response) {
+
                 //第二个viewpager
                 hotCityViewPagerAdapter.setRecommendBean(response);
                 viewPager2.setAdapter(hotCityViewPagerAdapter);
+            }
 
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
+
+        NetTool.getInstance().startRequest(Values.RecommendFragment_All_Intent, RecommendBean.class, new onHttpCallBack<RecommendBean>() {
+            @Override
+            public void onSuccess(RecommendBean response) {
                 //第三个部分
                 recommendAdapter.setRecommendBean(response);
                 listView.setAdapter(recommendAdapter);
-
-
 
             }
 

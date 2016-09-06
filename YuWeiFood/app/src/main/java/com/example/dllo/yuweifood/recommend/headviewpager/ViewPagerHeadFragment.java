@@ -135,9 +135,12 @@ package com.example.dllo.yuweifood.recommend.headviewpager;         /*
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import com.example.dllo.yuweifood.OKHttp.NetTool;
 import com.example.dllo.yuweifood.OKHttp.Values;
+import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
 
@@ -152,12 +155,29 @@ public class ViewPagerHeadFragment extends BaseFragment{
     @Override
     protected void initView(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        viewHeadAdapter = new ViewHeadAdapter(context);
+
 
     }
 
     @Override
     protected void initData() {
-//        NetTool.getInstance().startRequest(Values.Recommend_ViewPager_One_Intent,);
-        recyclerView.setAdapter(viewHeadAdapter);
+
+        NetTool.getInstance().startRequest(Values.Recommend_ViewPager_One_Intent, ViewPagerHeadBean.class, new onHttpCallBack<ViewPagerHeadBean>() {
+            @Override
+            public void onSuccess(ViewPagerHeadBean response) {
+                viewHeadAdapter.setViewPagerHeadBean(response);
+                recyclerView.setAdapter(viewHeadAdapter);
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        });
+
     }
+
+
 }

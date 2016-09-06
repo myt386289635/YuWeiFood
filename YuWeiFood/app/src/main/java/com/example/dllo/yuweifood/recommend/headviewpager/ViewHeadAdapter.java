@@ -136,6 +136,7 @@ package com.example.dllo.yuweifood.recommend.headviewpager;         /*
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -149,6 +150,14 @@ public class ViewHeadAdapter extends RecyclerView.Adapter<ViewHolder>{
     private ViewPagerHeadBean viewPagerHeadBean;
     private LayoutInflater inflater;
     private Context context;
+
+    public ViewPagerHeadBean getViewPagerHeadBean() {
+        return viewPagerHeadBean;
+    }
+
+    public void setViewPagerHeadBean(ViewPagerHeadBean viewPagerHeadBean) {
+        this.viewPagerHeadBean = viewPagerHeadBean;
+    }
 
     public ViewHeadAdapter(Context context) {
         this.context = context;
@@ -193,7 +202,7 @@ public class ViewHeadAdapter extends RecyclerView.Adapter<ViewHolder>{
             case 2:
                 TextHolder textHolder = (TextHolder) holder;
                 textHolder.textView.setText(viewPagerHeadBean.getData().getContent().get(position).getValue());
-
+                Log.d("+_+_+", viewPagerHeadBean.getData().getContent().get(position).getValue());
             case 1:
                 ImgHolder imgHolder = (ImgHolder) holder;
                 Glide.with(context).load(viewPagerHeadBean.getData().getContent().get(position).getValue()).into(((ImgHolder) holder).imageView);
