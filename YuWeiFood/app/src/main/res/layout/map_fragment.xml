@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <com.baidu.mapapi.map.MapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/activity_map_fragment_mapview"/>
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_all"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="全部"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_local"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="当地菜"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_northFood"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="东北菜"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_seafood"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="海鲜"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_japanFood"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="日本料理"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_tese"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="特色小吃"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_xican"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="西餐"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_zizhu"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="自助餐"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_bar"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="酒吧"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_dessert"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="甜品店"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_barbecue"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="烧烤"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_xiangcai"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="湘菜"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_hangbangcai"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="杭帮菜"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_shangwu"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="商务品味"
+                    android:textColor="#c1c1c1"/>
+
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_oneself"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="一人食"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_person"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="饮食男女"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_family"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="亲子美食"
+                    android:textColor="#c1c1c1"/>
+
+                <TextView
+                    android:id="@+id/activity_map_fragment_team"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="组团嗨吃"
+                    android:textColor="#c1c1c1"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="310dp"
+            android:layout_centerInParent="true"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:clipChildren="false"
+            android:id="@+id/activity_map_fragment_viewPager"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

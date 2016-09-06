@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 import com.wirelesspienetwork.overview.model.OverviewAdapter;
@@ -27,10 +28,6 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
     private Context mContext;
     private HotBean mBean;
 
-
-    private SimpleDateFormat simpleDateFormat;
-
-
     public void setBean(HotBean bean) {
         mBean = bean;
     }
@@ -38,7 +35,7 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
     public HotAdapter(Context context, List<Integer> integers) {
         super(integers);
         mContext = context;
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     }
 
     @Override
@@ -56,6 +53,7 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
         TextView text_name, text_leves, text_date, text_content;
         ImageView head_image;
         TextView text_good, text_comment, text_read;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
         image = viewIntegerViewHolder.getView(R.id.hot_fragment_item_image);
@@ -68,8 +66,9 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
         text_comment = viewIntegerViewHolder.getView(R.id.hot_fragment_item_textComment);
         text_read = viewIntegerViewHolder.getView(R.id.hot_fragment_item_textRead);
 
+
         if (mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader() != "") {
-            Picasso.with(mContext).load(mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader()).error(R.mipmap.default_header).placeholder(R.mipmap.default_header).into(image);
+            Glide.with(mContext).load(mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader()).error(R.mipmap.default_header).placeholder(R.mipmap.default_header).into(image);
 
         } else {
             image.setImageResource(R.mipmap.default_header);
@@ -80,7 +79,7 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
         String time = simpleDateFormat.format(new Date(mBean.getData().getList().get(position).getTime()));
         text_date.setText(time);
         text_content.setText(mBean.getData().getList().get(position).getText());
-        Picasso.with(mContext).load(mBean.getData().getList().get(position).getCover()).into(head_image);
+        Glide.with(mContext).load(mBean.getData().getList().get(position).getCover()).into(head_image);
         text_good.setText(mBean.getData().getList().get(position).getVote() + "赞");
         text_comment.setText(mBean.getData().getList().get(position).getPlnum() + "评论");
         text_read.setText(mBean.getData().getList().get(position).getReadnum() + "阅读");

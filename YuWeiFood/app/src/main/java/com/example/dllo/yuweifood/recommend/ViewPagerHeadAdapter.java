@@ -140,6 +140,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 
@@ -174,7 +175,7 @@ public class ViewPagerHeadAdapter extends PagerAdapter{
         View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
         imageView = (ImageView) view.findViewById(R.id.item_imageView);
 
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
+        Glide.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
         container.addView(view);
         return view;
     }

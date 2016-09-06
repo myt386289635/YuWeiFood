@@ -1,4 +1,4 @@
-package com.example.dllo.yuweifood.OKHttp;
+package com.example.dllo.yuweifood.tool;
 
 /**
  * Created by dllo on 16/9/1.
@@ -12,5 +12,7 @@ public class Values {
     //推荐界面网络接口全部
     public static final String RecommendFragment_All_Intent = "http://www.youyuwei.com/api/recommend?device_type=android&ver_code=33&app_ver=3.1&open_udid=08%3A00%3A27%3Aa0%3A39%3Ac7&oauth_signature=QRE7V%2BEaRdXq9T5%2B1VE52GoCcbw%3D&screen_height=1776&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=5&oauth_version=1.0&oauth_timestamp=1473035531&oauth_nonce=61f0dae4-0c25-457e-9da8-f9f6f409f34e&device_id=08%3A00%3A27%3Aa0%3A39%3Ac7&sys_ver=5.1&channel_id=yingyonghui&screen_width=1080&device_token=AjLGeagLnFzlBQucWNLgkTJYHmlMGBIlAzT1xfscPcSJ&oauth_token=77096_7189af217875b8646c9e993cef4dff5a&ywsdk_ver=20140507&ver=6&x_auth_mode=client_auth&app_code=com.yuwei.android";
 
-    public static final String LocalFragment_All_url = "http://www.youyuwei.com/api/localcity?device_type=android&ver_code=33&app_ver=3.1&open_udid=08%3A00%3A27%3Aa0%3A39%3Ac7&oauth_signature=hf78sFDWRPj%2BPh7ZI%2FKDEffRILI%3D&screen_height=1776&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=5&oauth_version=1.0&oauth_timestamp=1472904163&oauth_nonce=03e6ac9b-bd4f-4a3d-951d-e194ab7cae27&device_id=08%3A00%3A27%3Aa0%3A39%3Ac7&id=10083&name=%E5%A4%A7%E8%BF%9E&sys_ver=5.1&channel_id=yingyonghui&screen_width=1080&device_token=AjLGeagLnFzlBQucWNLgkTJYHmlMGBIlAzT1xfscPcSJ&oauth_token=77096_7189af217875b8646c9e993cef4dff5a&ywsdk_ver=20140507&ver=6&x_auth_mode=client_auth&app_code=com.yuwei.android";
+    public static final String LocalFragment_All_url = "http://www.youyuwei.com/api/localcity?device_type=android&ver_code=33&app_ver=3.1&open_udid=08%3A00%3A27%3Aa0%3A39%3Ac7&oauth_signature=PdbLJSusketynA9CGCC3K2wkTco%3D&screen_height=1776&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=5&oauth_version=1.0&oauth_timestamp=1473077737&oauth_nonce=4396c037-2322-4a4d-b64c-74e46307b983&device_id=08%3A00%3A27%3Aa0%3A39%3Ac7&id=10083&name=%E5%A4%A7%E8%BF%9E&sys_ver=5.1&channel_id=yingyonghui&screen_width=1080&device_token=AjLGeagLnFzlBQucWNLgkTJYHmlMGBIlAzT1xfscPcSJ&oauth_token=77096_7189af217875b8646c9e993cef4dff5a&ywsdk_ver=20140507&ver=6&x_auth_mode=client_auth&app_code=com.yuwei.android";
+    public static final String Sec_MapActivity_url = "http://www.youyuwei.com/api/rest?device_type=android&ver_code=33&cityid=10083&app_ver=3.1&open_udid=08%3A00%3A27%3Aa0%3A39%3Ac7&oauth_signature=Jpl9GsA86YKM9nKYXd1B5WqXioM%3D&screen_height=1776&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=5&oauth_version=1.0&oauth_timestamp=1473076233&oauth_nonce=77e63d2d-b6ce-4a4e-944a-cbeb079f8e5a&device_id=08%3A00%3A27%3Aa0%3A39%3Ac7&list=ListOfCityLabel&sys_ver=5.1&channel_id=yingyonghui&screen_width=1080&device_token=AjLGeagLnFzlBQucWNLgkTJYHmlMGBIlAzT1xfscPcSJ&oauth_token=77096_7189af217875b8646c9e993cef4dff5a&ywsdk_ver=20140507&ver=6&x_auth_mode=client_auth&app_code=com.yuwei.android";
+
 }

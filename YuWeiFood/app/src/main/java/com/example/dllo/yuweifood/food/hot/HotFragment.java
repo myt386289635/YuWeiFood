@@ -3,16 +3,13 @@ package com.example.dllo.yuweifood.food.hot;
 import android.view.View;
 
 import com.example.dllo.yuweifood.OKHttp.NetTool;
-import com.example.dllo.yuweifood.OKHttp.Values;
+import com.example.dllo.yuweifood.tool.Values;
 import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
-import com.wirelesspienetwork.overview.misc.Utilities;
 import com.wirelesspienetwork.overview.views.Overview;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**

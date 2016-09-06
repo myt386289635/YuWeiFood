@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.eventbusbean.Bean;
 import com.squareup.picasso.Picasso;
@@ -100,10 +101,10 @@ public class MovieAdapter extends BaseAdapter {
             holder.mLayout.setVisibility(View.VISIBLE);
             holder.mRelativeLayout.setVisibility(View.VISIBLE);
             holder.movieImage.setVisibility(View.VISIBLE);
-            Picasso.with(mContext).load(mBean.getData().getData().get(position).getGroup().getUser().getAvatar_url()).into(holder.UserImage);
+            Glide.with(mContext).load(mBean.getData().getData().get(position).getGroup().getUser().getAvatar_url()).into(holder.UserImage);
             holder.UserName.setText(mBean.getData().getData().get(position).getGroup().getUser().getName());
             holder.content.setText(mBean.getData().getData().get(position).getGroup().getContent());
-            Picasso.with(mContext).load(mBean.getData().getData().get(position).getGroup().getLarge_cover().getUrl_list().get(0).getUrl()).into(holder.movieImage);
+            Glide.with(mContext).load(mBean.getData().getData().get(position).getGroup().getLarge_cover().getUrl_list().get(0).getUrl()).into(holder.movieImage);
             holder.moviePlayNumber.setText(""+mBean.getData().getData().get(position).getGroup().getPlay_count());
 
             int min  = (int) (mBean.getData().getData().get(position).getGroup().getDuration() / 60);
@@ -115,7 +116,7 @@ public class MovieAdapter extends BaseAdapter {
             }
 
             if(mBean.getData().getData().get(position).getComments().size() != 0){
-                Picasso.with(mContext).load(mBean.getData().getData().get(position).getComments().get(0).getUser_profile_image_url()).into(holder.commentImage);
+                Glide.with(mContext).load(mBean.getData().getData().get(position).getComments().get(0).getUser_profile_image_url()).into(holder.commentImage);
                 holder.commentContent.setText(mBean.getData().getData().get(position).getComments().get(0).getText());
                 holder.commentImageNum.setText(""+mBean.getData().getData().get(position).getComments().get(0).getDigg_count());
                 holder.commentName.setText(mBean.getData().getData().get(position).getComments().get(0).getUser_name());

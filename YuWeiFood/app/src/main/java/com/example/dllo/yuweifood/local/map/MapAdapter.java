@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.local.LocalBean;
 import com.squareup.picasso.Picasso;
@@ -78,7 +79,7 @@ public class MapAdapter extends BaseAdapter {
             List<Map<String,String>> values = (List<Map<String, String>>) content;
             hodler.name.setText(values.get(position).get("name"));
             hodler.content.setText(values.get(position).get("cost") + "元/人" + "\t"+ values.get(position).get("type"));
-            Picasso.with(mContext).load(values.get(position).get("cover")).into(hodler.mImageView);
+            Glide.with(mContext).load(values.get(position).get("cover")).into(hodler.mImageView);
             hodler.local.setText(values.get(position).get("km"));
         }
 
@@ -99,4 +100,5 @@ public class MapAdapter extends BaseAdapter {
             symbol = (ImageView) view.findViewById(R.id.citymap_1);
         }
     }
+
 }

@@ -171,10 +171,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
     }
 
+
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("---", "++");
         mEditor.putBoolean("play",false);
         mEditor.putString("url","");
         mEditor.commit();
