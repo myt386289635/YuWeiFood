@@ -141,6 +141,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 
@@ -186,9 +188,10 @@ public class HotCityAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
+
         viewHolder.text_name.setText(mbean.get(position).getName());
         viewHolder.text_summary.setText(mbean.get(position).getContent());
-        Picasso.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
+        Glide.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
 
 
 

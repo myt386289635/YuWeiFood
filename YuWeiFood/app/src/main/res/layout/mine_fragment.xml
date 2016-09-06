@@ -93,7 +93,7 @@
         android:layout_height="6dip"
         android:background="#f4f1f1" />
     <RelativeLayout
-        android:id="@+id/item_me_relativelayout2"
+        android:id="@+id/item_me_notice"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
@@ -181,7 +181,7 @@
         android:layout_height="6dip"
         android:background="#f4f1f1" />
     <RelativeLayout
-        android:id="@+id/item_me_relativelayout4"
+        android:id="@+id/item_me_collection"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
@@ -226,7 +226,7 @@
         android:layout_marginRight="10dp"
         android:background="#e2dfdf" />
     <RelativeLayout
-        android:id="@+id/item_me_collection"
+        android:id="@+id/item_me_collection1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
@@ -269,7 +269,7 @@
         android:layout_height="6dip"
         android:background="#f4f1f1" />
     <RelativeLayout
-        android:id="@+id/item_me_relativelayout6"
+        android:id="@+id/item_me_system"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"

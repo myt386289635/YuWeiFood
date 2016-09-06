@@ -178,6 +178,7 @@ public class HotCityFragment extends BaseFragment{
                      for (int i = 0; i < response.getData().getList().get(2).getContent().get(0).getContent().size(); i++) {
 
                          beanList.add(new ViewPagerBean(response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getCover(),response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getName(),response.getData().getList().get(2).getContent().get(0).getContent().get(i).getContent().getSummary()));
+
                          hotCityAdapter.setMbean(beanList);
                          myGridView.setAdapter(hotCityAdapter);
                      }
@@ -238,4 +239,5 @@ public class HotCityFragment extends BaseFragment{
         fragment.setArguments(args);
         return fragment;
     }
+
 }

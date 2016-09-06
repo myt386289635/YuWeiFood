@@ -8,10 +8,10 @@
 
     <ImageView
 
-        android:background="@mipmap/ic_launcher"
+
         android:id="@+id/item_recom_viewpager_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
     <TextView
         android:text="121212"
         android:textColor="#ffa12c"

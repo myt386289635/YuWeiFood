@@ -6,31 +6,40 @@
 
 
     >
-    <TextView
-
-        android:id="@+id/text_addhead"
-        android:text="精选美食游记"
-        android:textSize="20dp"
-        android:textColor="#ffa12c"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff">
 
-        />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_toRightOf="@+id/text_view"
+            android:background="#ffa13c"/>
 
-    <!--<View-->
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="精选美食游记"
+            android:textColor="#ffa13c"
+            android:textSize="16dp"/>
 
-           <!--android:layout_height="2dp"-->
-           <!--android:layout_width="80dp"-->
-           <!--android:background="#ffa12c"-->
-           <!--android:layout_centerVertical="true"-->
-           <!--android:layout_toStartOf="@+id/text_addhead"/>-->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/text_view"
+            android:background="#ffa13c"/>
 
-    <!--<View-->
+    </RelativeLayout>
 
-        <!--android:layout_height="2dp"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:background="#ffa12c"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_toEndOf="@+id/text_addhead"/>-->
+
 </LinearLayout>
