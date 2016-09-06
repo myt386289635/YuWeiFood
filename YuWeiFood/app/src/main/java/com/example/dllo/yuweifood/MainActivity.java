@@ -23,7 +23,10 @@ import com.example.dllo.yuweifood.local.LocalFragment;
 import com.example.dllo.yuweifood.mine.MineFragment;
 import com.example.dllo.yuweifood.recommend.RecommendFragment;
 
+
 public class MainActivity extends BaseActivity implements OnClickListener {
+
+
 
     private RadioButton mRadioButton_recommend,mRadioButton_local,mRadioButton_food,mRadioButton_mine;
     private TextView mTextView_recommend,mTextView_local,mTextView_food,mTextView_mine;
@@ -186,12 +189,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         messageFlag = true;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        playing = false;
-    }
-
     Handler mHandler = new Handler(new Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -199,4 +196,18 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             return false;
         }
     });
+
+
+
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+        playing = false;
+    }
+
+
+
+
 }

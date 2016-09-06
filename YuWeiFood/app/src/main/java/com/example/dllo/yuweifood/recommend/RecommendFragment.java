@@ -1,5 +1,6 @@
 package com.example.dllo.yuweifood.recommend;
 
+import android.content.ComponentName;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -24,7 +25,7 @@ public class RecommendFragment extends BaseFragment {
 
 
     private ViewPager viewPager,viewPager2;
-    private View view1,view2,view3;
+    private View view1,view2,view3,view4;
 
     private boolean lock = true;
     private boolean flag = true;
@@ -42,9 +43,9 @@ public class RecommendFragment extends BaseFragment {
     protected void initView(View view) {
         listView = (ListView) view.findViewById(R.id.list_recommend);
         view1 = LayoutInflater.from(context).inflate(R.layout.item_recom_onehead_text,null);
-
         view2 = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager,null);
         view3 = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager_two,null);
+        view4 = LayoutInflater.from(context).inflate(R.layout.item_recom_miqilin_head,null);
 
         viewPager2 = (ViewPager) view3.findViewById(R.id.item_recom_view_pager_two);
         viewPager = (ViewPager) view2.findViewById(R.id.item_recom_view_pager);
@@ -52,6 +53,7 @@ public class RecommendFragment extends BaseFragment {
         //头布局
         listView.addHeaderView(view2);
         listView.addHeaderView(view3);
+        listView.addHeaderView(view4);
         listView.addHeaderView(view1);
 
 

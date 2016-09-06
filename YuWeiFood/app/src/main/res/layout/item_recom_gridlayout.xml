@@ -1,19 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:orientation="vertical"
               android:paddingLeft="10dp"
-              android:paddingRight="10dp"
+              android:paddingRight="10dp">
 
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_toRightOf="@+id/text_view"
+            android:background="#ffa13c"/>
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="看看看看"
+            android:textColor="#ffa13c"
+            android:textSize="16dp"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/text_view"
+            android:background="#ffa13c"/>
+
+    </RelativeLayout>
 
     <com.example.dllo.yuweifood.tool.MyGridView
         android:id="@+id/item_recom_gridlayout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#ffffff"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
         android:numColumns="3">
     </com.example.dllo.yuweifood.tool.MyGridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/buttonstyle"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="查看全球263个目的地"
+            android:textColor="#ffa13c"/>
+
+
+    </LinearLayout>
+
 </LinearLayout>

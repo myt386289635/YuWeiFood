@@ -133,10 +133,30 @@ package com.example.dllo.yuweifood.mine.collection;         /*
                                                         ------- To you.
         */
 
+import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseActivity;
+import com.example.dllo.yuweifood.mine.LoginFragment;
+import com.example.dllo.yuweifood.mine.RegisterFragment;
+import com.example.dllo.yuweifood.mine.SignAdapter;
 
-public class CollectionActivity extends BaseActivity {
+import java.util.ArrayList;
+
+
+public class CollectionActivity extends BaseActivity implements OnClickListener {
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private CollectionAdapter collectionAdapter;
+    private ArrayList<Fragment> list;
+
+    private ImageView imageback;
     @Override
     protected int setLayout() {
         return R.layout.activity_collection;
@@ -144,11 +164,36 @@ public class CollectionActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        viewPager = (ViewPager) findViewById(R.id.collection_viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.collection_tablayout);
+        imageback = (ImageView) findViewById(R.id.collection_back_imageview);
+        imageback.setOnClickListener(this);
+
 
     }
 
     @Override
     protected void initDate() {
+        list = new ArrayList<>();
 
+        list.add(new CollectionAllFragment());
+        list.add(new CollectionAllFragment());
+        list.add(new CollectionAllFragment());
+        list.add(new CollectionAllFragment());
+        collectionAdapter = new CollectionAdapter(getSupportFragmentManager(),list);
+
+        viewPager.setAdapter(collectionAdapter);
+tabLayout.setTabTextColors(Color.BLACK,Color.GRAY);
+        tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.collection_back_imageview:
+                finish();
+                break;
+        }
     }
 }
