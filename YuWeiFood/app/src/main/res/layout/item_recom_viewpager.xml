@@ -11,6 +11,7 @@
         android:id="@+id/item_recom_view_pager"
         />
     <LinearLayout
+        android:id="@+id/yiyiyiyiyiyiyi"
         android:background="#b3afaf"
         android:padding="5dp"
         android:layout_margin="10dp"

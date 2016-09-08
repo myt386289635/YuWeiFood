@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.local.LocalBean;
 import com.squareup.picasso.Picasso;
@@ -83,7 +84,7 @@ public class DishAdapter extends BaseAdapter {
         Object object = mBean.getData().getList().get(3).getContent();
         if(object instanceof List) {
             List<Map<String, String>> values = (List<Map<String, String>>) object;
-            Picasso.with(mContext).load(values.get(position).get("cover")).into(holder.mImageView);
+            Glide.with(mContext).load(values.get(position).get("cover")).into(holder.mImageView);
             holder.name.setText(values.get(position).get("name"));
             holder.content.setText(values.get(position).get("sum"));
         }

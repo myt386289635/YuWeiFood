@@ -134,19 +134,28 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
-import com.squareup.picasso.Picasso;
+import com.example.dllo.yuweifood.recommend.headviewpager.ViewPagerHeadActivity;
+import com.example.dllo.yuweifood.tool.Values;
 
 public class ViewPagerHeadAdapter extends PagerAdapter{
     private Context context;
     private RecommendBean recommendBean;
     private ImageView imageView;
+    private String string;
+    private static final String[] ALL_VIEWPAGER_HEAD = {Values.Recommend_ViewPager_One_Intent, Values.Recommend_ViewPager_Two_Intent
+            , Values.Recommend_ViewPager_Three_Intent, Values.Recommend_ViewPager_Four_Intent};
 
 
     public ViewPagerHeadAdapter(Context context) {
@@ -169,12 +178,23 @@ public class ViewPagerHeadAdapter extends PagerAdapter{
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
+
+
         //每次都得加载一个行布局
         View view = LayoutInflater.from(context).inflate(R.layout.item_recom_image,container,false);
         imageView = (ImageView) view.findViewById(R.id.item_imageView);
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                string = ALL_VIEWPAGER_HEAD[position %recommendBean.getData().getList().size()];
+                Intent intent = new Intent(context, ViewPagerHeadActivity.class);
+                intent.putExtra("position",string);
+                context.startActivity(intent);
+            }
+        });
 
-        Picasso.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
+        Glide.with(context).load(recommendBean.getData().getList().get(0).getContent().get(position % recommendBean.getData().getList().size()).getImg()).into(imageView);
         container.addView(view);
         return view;
     }

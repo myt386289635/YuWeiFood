@@ -134,10 +134,10 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import com.example.dllo.yuweifood.OKHttp.NetTool;
-import com.example.dllo.yuweifood.OKHttp.Values;
+import com.example.dllo.yuweifood.tool.MyGridView;
+import com.example.dllo.yuweifood.tool.Values;
 import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;

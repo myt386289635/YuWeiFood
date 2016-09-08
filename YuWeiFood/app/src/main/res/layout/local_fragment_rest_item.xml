@@ -7,7 +7,7 @@
     android:background="#ffffff">
 
     <LinearLayout
-
+        android:layout_marginBottom="-10dp"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -31,7 +31,7 @@
     </LinearLayout>
 
 
-    <com.example.dllo.yuweifood.recommend.MyGridView
+    <com.example.dllo.yuweifood.tool.MyGridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="1"

@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
 import com.squareup.picasso.Picasso;
 
@@ -61,7 +62,7 @@ public class AttentAdapter extends BaseAdapter {
             viewHoder = (ViewHoder) convertView.getTag();
         }
 
-        Picasso.with(mContext).load(mBean.getData().getList().get(position).getHeader()).into(viewHoder.Image);
+        Glide.with(mContext).load(mBean.getData().getList().get(position).getHeader()).into(viewHoder.Image);
         viewHoder.name.setText(mBean.getData().getList().get(position).getUname());
         viewHoder.mine.setText(mBean.getData().getList().get(position).getVname());
         viewHoder.content.setText(mBean.getData().getList().get(position).getDesc());

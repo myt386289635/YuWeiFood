@@ -151,12 +151,9 @@ public class ViewHeadAdapter extends RecyclerView.Adapter<ViewHolder>{
     private LayoutInflater inflater;
     private Context context;
 
-    public ViewPagerHeadBean getViewPagerHeadBean() {
-        return viewPagerHeadBean;
-    }
-
     public void setViewPagerHeadBean(ViewPagerHeadBean viewPagerHeadBean) {
         this.viewPagerHeadBean = viewPagerHeadBean;
+        notifyDataSetChanged();
     }
 
     public ViewHeadAdapter(Context context) {
@@ -170,10 +167,10 @@ public class ViewHeadAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public int getItemViewType(int position) {
-        if (viewPagerHeadBean.getData().getContent().get(position).getType() == ViewPagerHeadBean.BEAN_TYPE_TEXT ){
+        if (viewPagerHeadBean.getData().getContent().get(position).getType().equals(ViewPagerHeadBean.BEAN_TYPE_TEXT) ){
             return 2;
         }
-        else if(viewPagerHeadBean.getData().getContent().get(position).getType() == ViewPagerHeadBean.BEAN_TYPE_IMG ){
+        else if(viewPagerHeadBean.getData().getContent().get(position).getType().equals(ViewPagerHeadBean.BEAN_TYPE_IMG)  ){
 
             return 1;
         }else{
@@ -184,28 +181,39 @@ public class ViewHeadAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ViewHolder holder = null;
         switch (viewType){
-            case 2:
-                return new TextHolder(inflater.inflate(R.layout.item_recom_text,null));
             case 1:
-                return new ImgHolder(inflater.inflate(R.layout.item_recom_img,null));
+                View view = LayoutInflater.from(context).inflate(R.layout.item_recom_img,parent,false);
+                holder = new ImgHolder(view);
+
+                break;
+            case 2:
+                View view1 = LayoutInflater.from(context).inflate(R.layout.item_recom_text,parent,false);
+                holder = new TextHolder(view1);
+                break;
 
         }
-        return null;
+
+
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         int viewType = getItemViewType(position);
 
         switch (viewType){
             case 2:
                 TextHolder textHolder = (TextHolder) holder;
                 textHolder.textView.setText(viewPagerHeadBean.getData().getContent().get(position).getValue());
-                Log.d("+_+_+", viewPagerHeadBean.getData().getContent().get(position).getValue());
+                break;
             case 1:
                 ImgHolder imgHolder = (ImgHolder) holder;
-                Glide.with(context).load(viewPagerHeadBean.getData().getContent().get(position).getValue()).into(((ImgHolder) holder).imageView);
+                Glide.with(context).load(viewPagerHeadBean.getData().getContent().get(position).getValue()).into(imgHolder.imageView);
+                break;
+
 
         }
 

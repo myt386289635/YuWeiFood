@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.dllo.yuweifood.OKHttp.NetTool;
-import com.example.dllo.yuweifood.OKHttp.Values;
+import com.example.dllo.yuweifood.tool.Values;
 import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
@@ -47,5 +47,11 @@ public class LocalFragment extends BaseFragment{
 
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
     }
 }

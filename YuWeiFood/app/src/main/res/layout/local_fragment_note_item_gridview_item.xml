@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/local_fragment_note_item_gridview_item_image"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:background="#9c8793"
+        android:layout_marginBottom="10dp"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#c1c1c1"
+        android:layout_below="@id/local_fragment_note_item_gridview_item_image"/>
+
+    <TextView
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#c1c1c1"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/local_fragment_note_item_gridview_item_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/local_fragment_note_item_gridview_item_content"
+        android:text="llalala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#c1c1c1"
+        android:textSize="13sp"
+        android:text="lalala"
+        android:layout_below="@id/local_fragment_note_item_gridview_item_content"
+        android:layout_toRightOf="@id/local_fragment_note_item_gridview_item_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/local_fragment_note_item_gridview_item_date"/>
+
+
+    <ImageView
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/local_fragment_note_item_gridview_item_content"
+        android:layout_toRightOf="@id/local_fragment_note_item_gridview_item_date"
+        android:id="@+id/local_fragment_note_item_gridview_item_userImage"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#c1c1c1"
+        android:textSize="13sp"
+        android:text="lalala"
+        android:layout_below="@id/local_fragment_note_item_gridview_item_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/local_fragment_note_item_gridview_item_userImage"
+        android:id="@+id/local_fragment_note_item_gridview_item_userName"/>
+</RelativeLayout>

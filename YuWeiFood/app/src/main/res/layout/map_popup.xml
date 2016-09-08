@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/map">
+
+
+    <TextView
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:id="@+id/map_popup_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地点:"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/map_popup_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="11sp"
+        android:text="lalalalalalallal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        />
+
+</LinearLayout>
