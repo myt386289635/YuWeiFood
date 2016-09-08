@@ -134,7 +134,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
     });
 
-
     @Override
     public void onClick(View v) {
 
