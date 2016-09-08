@@ -3,9 +3,11 @@ package com.example.dllo.yuweifood.local.rest;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -82,6 +84,12 @@ public class RestAdapter extends BaseAdapter{
             viewholder.price.setText(list.get(position).get("cost")+"元/人");
         }
 
+        viewholder.mLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return convertView;
     }
 
@@ -89,12 +97,14 @@ public class RestAdapter extends BaseAdapter{
 
         private TextView title,content,price;
         private ImageView image;
+        private RelativeLayout mLayout;
 
         public Viewholder(View view) {
             title = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_name);
             content = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_content);
             price = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_price);
             image = (ImageView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_image);
+            mLayout = (RelativeLayout) view.findViewById(R.id.local_fragment_rest_item_gridview_item_mLayout);
         }
     }
 }
