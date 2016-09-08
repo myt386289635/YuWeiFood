@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -120,8 +121,35 @@ public class LocalAdaapter extends RecyclerView.Adapter {
                 Object content = mBean.getData().getList().get(position).getContent();
                 if(content instanceof Map){
 
-                    Map<String,String> map  = (Map<String, String>) content;
-                    Glide.with(mContext).load(map.get("cover")).into(headViewHolder.mImageView);
+                    Map<String,Object> map  = (Map<String, Object>) content;
+                    Object img = map.get("cover");
+                    if(img instanceof String){
+                        String str = (String) img;
+                        Glide.with(mContext).load(str).into(headViewHolder.mImageView);
+                    }
+
+                    Object labellist = map.get("labellist");
+                    if(labellist instanceof List){
+                        final List<Map<String,String>> values = (List<Map<String, String>>) labellist;
+
+                        LinearLayout[] linearLayouts = {headViewHolder.all,headViewHolder.local,headViewHolder.tese,headViewHolder.xican,headViewHolder.shangwu,headViewHolder.oneself,headViewHolder.qinglv,headViewHolder.family,headViewHolder.team};
+                        final Integer[] ids={R.id.local_fragment_head_item_fujin,R.id.local_fragment_head_item_local,R.id.local_fragment_head_item_tese,R.id.local_fragment_head_item_xican,R.id.local_fragment_head_item_shangwu,R.id.local_fragment_head_item_oneself,R.id.local_fragment_head_item_qinglv,R.id.local_fragment_head_item_family,R.id.local_fragment_head_item_team};
+
+                        for (int i = 0; i < linearLayouts.length; i++) {
+                            linearLayouts[i].setOnClickListener(new OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    for (int i = 0; i < ids.length; i++) {
+                                        if(v.getId() == ids[i]){
+                                            Intent intent = new Intent(mContext,MapActivity.class);
+                                            intent.putExtra("tag",values.get(i).get("labelname"));
+                                            mContext.startActivity(intent);
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
                 }
 
                 break;
@@ -164,6 +192,7 @@ public class LocalAdaapter extends RecyclerView.Adapter {
                         switch (motionEvent.getAction()){
                             case MotionEvent.ACTION_DOWN:
                                 Intent intent = new Intent(mContext, MapActivity.class);
+                                intent.putExtra("tag","map");
                                 mContext.startActivity(intent);
                                 break;
                         }
@@ -241,9 +270,22 @@ public class LocalAdaapter extends RecyclerView.Adapter {
     class HeadViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView mImageView;
+
+        private LinearLayout all,local,tese,xican,shangwu,oneself,qinglv,family,team;
+
         public HeadViewHolder(View itemView) {
             super(itemView);
             mImageView  = (ImageView) itemView.findViewById(R.id.local_fragment_head_item_image);
+            all = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_fujin);
+            local = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_local);
+            tese = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_tese);
+            xican = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_xican);
+            shangwu = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_shangwu);
+            oneself = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_oneself);
+            qinglv = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_qinglv);
+            family = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_family);
+            team = (LinearLayout) itemView.findViewById(R.id.local_fragment_head_item_team);
+
         }
     }
 

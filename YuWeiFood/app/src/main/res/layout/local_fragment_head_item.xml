@@ -23,6 +23,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_fujin"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -47,6 +48,7 @@
 
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_local"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -71,6 +73,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_tese"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
@@ -95,6 +98,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_xican"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -119,6 +123,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_shangwu"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
@@ -143,6 +148,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_oneself"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -168,6 +174,7 @@
 
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_qinglv"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -192,6 +199,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_family"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -216,6 +224,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/local_fragment_head_item_team"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"

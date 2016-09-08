@@ -20,11 +20,19 @@ public class ListAdapter extends FragmentPagerAdapter{
    private String[] title = {"全部","当地菜","东北菜","海鲜","日本料理","特色小吃","西餐","自助餐","酒吧","甜品店","烧烤","湘菜","杭帮菜","商务品味","一人食","饮食男女","亲子美食","组团嗨吃"};
     private SecMapBean mBean;
     private  ArrayList<ViewPagerBean> mlist;
+    private String tag;
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public void setBean(SecMapBean bean) {
         mBean = bean;
     }
 
+    public String[] getTitle() {
+        return title;
+    }
 
     public ListAdapter(FragmentManager fm) {
         super(fm);

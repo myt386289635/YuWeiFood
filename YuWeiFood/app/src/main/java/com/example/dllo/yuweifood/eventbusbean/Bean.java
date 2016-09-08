@@ -6,6 +6,15 @@ package com.example.dllo.yuweifood.eventbusbean;
 public class Bean {
 
     public Boolean showing;
+    public String mtag;
+
+    public String getMtag() {
+        return mtag;
+    }
+
+    public void setMtag(String mtag) {
+        this.mtag = mtag;
+    }
 
     public Boolean getShowing() {
         return showing;

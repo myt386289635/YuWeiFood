@@ -1,5 +1,6 @@
 package com.example.dllo.yuweifood.local.map.sec;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,8 +16,11 @@ import android.widget.ImageView;
 
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseActivity;
+import com.example.dllo.yuweifood.eventbusbean.Bean;
 import com.example.dllo.yuweifood.local.map.sec.listfragment.ListFragment;
 import com.example.dllo.yuweifood.local.map.sec.mapfragment.MapFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +54,21 @@ public class MapActivity extends BaseActivity implements OnClickListener {
     @Override
     protected void initDate() {
 
+
         mImageView.setOnClickListener(this);
         replace.setOnClickListener(this);
 
-        replaceFragment(new MapFragment());
+        if(getIntent().getStringExtra("tag").equals("map")){
+            replaceFragment(new MapFragment());
+        }else {
+            ListFragment fragment = new ListFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("tag",getIntent().getStringExtra("tag"));
+            fragment.setArguments(bundle);
+            replaceFragment(fragment);
+            replace.setChecked(true);
+            flag = false;
+        }
     }
 
     @Override

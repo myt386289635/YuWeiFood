@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:paddingBottom="30dp"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-
+              android:background="#ffffff"
 
     >
 
@@ -23,7 +22,7 @@
             android:layout_width="0.5dip"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="#ccc6c6" />
 
         <ImageView
@@ -35,16 +34,15 @@
 
 
     </LinearLayout>
+    <!--<View-->
+
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="0.5dip"-->
+        <!--android:background="#a7a3a3" />-->
+
     <View
-
         android:layout_width="fill_parent"
-        android:layout_height="0.5dip"
-        android:background="#a7a3a3" />
-
-    <View
-
-        android:layout_width="fill_parent"
-        android:layout_height="15dip"
-        android:background="#d9d2d2" />
+        android:layout_height="20dip"
+        android:background="#000000" />
 
 </LinearLayout>

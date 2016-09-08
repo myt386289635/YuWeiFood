@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:background="#f88"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:id="@+id/activity_details_head_item_background"/>
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/activity_details_head_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#ffffff"
+                android:text="名字"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:text="作者:"/>
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:text="lalala"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:id="@+id/activity_details_head_item_name"/>
+
+
+                <TextView
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:id="@+id/activity_details_head_item_date"
+                    android:layout_width="wrap_content"
+                    android:text="date"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="bottom"
+                    android:id="@+id/activity_details_head_item_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#ffffff"
+                    android:text="LV0"/>
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/activity_details_head_item_userImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/activity_details_head_item_like"
+                    android:background="@mipmap/note_header_like"
+                    android:layout_centerVertical="true"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"/>
+
+                <TextView
+                    android:layout_toRightOf="@id/activity_details_head_item_like"
+                    android:layout_marginRight="25dp"
+                    android:id="@+id/activity_details_head_item_likeNum"
+                    android:textColor="#ffffff"
+                    android:text="lalalal"
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_toRightOf="@id/activity_details_head_item_likeNum"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/activity_details_head_item_fav"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@mipmap/note_header_fav"/>
+
+
+                <TextView
+                    android:layout_toRightOf="@id/activity_details_head_item_fav"
+                    android:id="@+id/activity_details_head_item_favNum"
+                    android:textColor="#ffffff"
+                    android:text="lalalal"
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/city_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@mipmap/note_city"/>
+
+            <TextView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="城市:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="lalala"
+                android:id="@+id/activity_details_head_item_cityName"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rest_layout"
+            android:layout_marginLeft="100dp"
+            android:layout_toRightOf="@id/city_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@mipmap/note_rest"/>
+
+            <TextView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="餐厅:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="lalala"
+                android:id="@+id/activity_details_head_item_restName"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/num_layout"
+            android:layout_below="@id/city_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@mipmap/note_num"/>
+
+            <TextView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="餐厅:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="lalala"
+                android:id="@+id/activity_details_head_item_numName"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cost_layout"
+            android:layout_below="@id/city_layout"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@id/rest_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@mipmap/note_cost"/>
+
+            <TextView
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="餐厅:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#c1c1c1"
+                android:text="lalala"
+                android:id="@+id/activity_details_head_item_costName"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

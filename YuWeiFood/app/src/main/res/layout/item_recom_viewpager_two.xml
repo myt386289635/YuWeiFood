@@ -9,7 +9,7 @@
         android:id="@+id/item_recom_view_pager_two"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="#d9d2d2"
+        android:background="#000000"
         />
 
 </LinearLayout>

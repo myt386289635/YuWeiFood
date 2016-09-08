@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
+import com.example.dllo.yuweifood.food.hot.secdetails.DetailsActivity;
+import com.example.dllo.yuweifood.tool.Values;
 import com.squareup.picasso.Picasso;
 import com.wirelesspienetwork.overview.model.OverviewAdapter;
 import com.wirelesspienetwork.overview.model.ViewHolder;
@@ -18,6 +22,8 @@ import com.wirelesspienetwork.overview.model.ViewHolder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by dllo on 16/9/1.
@@ -45,7 +51,7 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder<View, Integer> viewIntegerViewHolder, int position) {
+    public void onBindViewHolder(ViewHolder<View, Integer> viewIntegerViewHolder, final int position) {
         viewIntegerViewHolder.itemView.setBackgroundColor(viewIntegerViewHolder.model);
 //        Log.d(TAG, "position:" + position);
 
@@ -68,7 +74,7 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
 
 
         if (mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader() != "") {
-            Glide.with(mContext).load(mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader()).error(R.mipmap.default_header).placeholder(R.mipmap.default_header).into(image);
+            Glide.with(mContext).load(mBean.getData().getList().get(viewIntegerViewHolder.getPosition()).getAuthor().getHeader()).bitmapTransform(new CropCircleTransformation(mContext)).error(R.mipmap.default_header).placeholder(R.mipmap.default_header).into(image);
 
         } else {
             image.setImageResource(R.mipmap.default_header);
@@ -83,6 +89,34 @@ public class HotAdapter extends OverviewAdapter<ViewHolder<View, Integer>, Integ
         text_good.setText(mBean.getData().getList().get(position).getVote() + "赞");
         text_comment.setText(mBean.getData().getList().get(position).getPlnum() + "评论");
         text_read.setText(mBean.getData().getList().get(position).getReadnum() + "阅读");
+
+//        Log.d("--", "position:" + position);
+        viewIntegerViewHolder.itemView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Log.d("==", "...");
+                for (int i = 0; i <= Values.FoodFragment_HotFragment_items.length; i++) {
+
+//                    Log.d("00", i+"");
+                    if (i == position - 1) {
+
+                        Intent intent = new Intent(mContext, DetailsActivity.class);
+                        intent.putExtra("url", Values.FoodFragment_HotFragment_items[48 - i]);
+                        mContext.startActivity(intent);
+
+
+                    }
+
+                }
+
+                if(position == 1){
+
+                }
+
+            }
+        });
+
     }
 
 }
