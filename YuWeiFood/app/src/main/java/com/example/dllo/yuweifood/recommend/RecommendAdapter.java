@@ -135,16 +135,22 @@ package com.example.dllo.yuweifood.recommend;         /*
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
+import com.example.dllo.yuweifood.food.hot.secdetails.DetailsActivity;
+import com.example.dllo.yuweifood.tool.Values;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -156,6 +162,8 @@ public class RecommendAdapter extends BaseAdapter{
     private RecommendBean recommendBean;
     private Context context;
     private SimpleDateFormat simpleDateFormat;
+    private String string;
+
 
     public RecommendAdapter(Context context) {
         this.context = context;
@@ -183,7 +191,7 @@ public class RecommendAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder = null;
 
@@ -201,6 +209,16 @@ public class RecommendAdapter extends BaseAdapter{
         viewHolder.tv_title.setText(recommendBean.getData().getList().get(3).getContent().get(position).getName());
         viewHolder.tv_uname.setText(recommendBean.getData().getList().get(3).getContent().get(position).getAuthor().getUname());
         Glide.with(context).load(recommendBean.getData().getList().get(3).getContent().get(position).getAuthor().getHeader()).bitmapTransform(new CropCircleTransformation(context)).into(viewHolder.iv_header);
+        viewHolder.linearLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("url", Values.RecommendFragment_List_GoodFood_one[position]);
+                context.startActivity(intent);
+            }
+        });
         return convertView;
 
     }
@@ -208,6 +226,7 @@ public class RecommendAdapter extends BaseAdapter{
     class ViewHolder{
         private TextView tv_time,tv_title,tv_uname;
         private ImageView iv_cover,iv_header;
+        private LinearLayout linearLayout;
 
         public ViewHolder(View view){
             tv_time = (TextView) view.findViewById(R.id.item_text_time);
@@ -215,6 +234,8 @@ public class RecommendAdapter extends BaseAdapter{
             tv_uname = (TextView) view.findViewById(R.id.item_text_uname);
             iv_cover = (ImageView) view.findViewById(R.id.item_image_cover);
             iv_header = (ImageView) view.findViewById(R.id.item_image_header);
+            linearLayout = (LinearLayout) view.findViewById(R.id.item_linear_layout);
+
         }
     }
 }

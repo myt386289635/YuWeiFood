@@ -1,4 +1,4 @@
-package com.example.dllo.yuweifood.recommend;         /*
+package com.example.dllo.yuweifood.recommend.cityactivity;         /*
                                 MMMMM
                                   MMMMMM
                                     MMMMMMM
@@ -134,92 +134,155 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
-import com.example.dllo.yuweifood.recommend.cityactivity.CityActivity;
-import com.example.dllo.yuweifood.tool.Values;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Map;
 
-
-public class HotCityAdapter extends BaseAdapter{
+public class CityAdapter extends RecyclerView.Adapter {
     private Context context;
+    private CityBean cityBean;
 
-
-    private List<ViewPagerBean> mbean;
-
-    public void setMbean(List<ViewPagerBean> mbean) {
-        this.mbean = mbean;
-    }
-
-    public HotCityAdapter(Context context) {
+    public CityAdapter(Context context) {
         this.context = context;
     }
 
-    @Override
-    public int getCount() {
-        return mbean.size();
+    public void setCityBean(CityBean cityBean) {
+        this.cityBean = cityBean;
     }
 
     @Override
-    public Object getItem(int position) {
-        return mbean.get(position);
+    public int getItemViewType(int position) {
+        if (cityBean.getData().getList().get(position).getType().equals("city")){
+            return 0;
+        }else if(cityBean.getData().getList().get(position).getType().equals("dish")) {
+            return 1;
+        }else if(cityBean.getData().getList().get(position).getType().equals("rest")) {
+            return 2;
+        }else if(cityBean.getData().getList().get(position).getType().equals("note")) {
+            return 3;
+        }
+
+        return 5;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewHolder viewHolder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager_image_text, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+        switch (viewType) {
+            case 0:
+                View headView = LayoutInflater.from(context).inflate(R.layout.activity_city_head_item, parent, false);
+                viewHolder = new HeadViewHolder(headView);
+                break;
+            case 1:
+                View ViewTwo = LayoutInflater.from(context).inflate(R.layout.activity_city_three_item, parent, false);
+                viewHolder = new TwoViewHolder(ViewTwo);
+                break;
+            case 2:
+                View ViewThree = LayoutInflater.from(context).inflate(R.layout.activity_city_four_item,parent,false);
+                break;
+
+            case 3:
+                View ViewFour = LayoutInflater.from(context).inflate(R.layout.activity_city_five_item,parent,false);
+                break;
         }
 
-        viewHolder.text_name.setText(mbean.get(position).getName());
-        viewHolder.text_summary.setText(mbean.get(position).getContent());
-        Glide.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
-        viewHolder.linearLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, CityActivity.class);
-                intent.putExtra("yayaya", Values.LaoTao_One);
-                context.startActivity(intent);
-            }
-        });
 
-        return convertView;
+        return viewHolder;
     }
-    class ViewHolder {
-        private TextView text_name,text_summary;
-        private ImageView image_cover;
-        private LinearLayout linearLayout;
-        public ViewHolder(View view) {
-            super();
 
-            text_name = (TextView) view.findViewById(R.id.item_recom_viewpager_text);
-            image_cover = (ImageView) view.findViewById(R.id.item_recom_viewpager_image);
-            text_summary = (TextView) view.findViewById(R.id.item_recom_viewpager_text_summary);
-            linearLayout = (LinearLayout) view.findViewById(R.id.city_linear_layout);
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        int type = getItemViewType(position);
+
+        switch(type){
+            case 0:
+                HeadViewHolder headViewHolder = (HeadViewHolder) holder;
+                Object object = cityBean.getData().getList().get(position).getContent();
+                if (object instanceof Map){
+                    Map<String,String> map  = (Map<String, String>) object;
+                    String img = map.get("cover");
+                        Glide.with(context).load(img).into(headViewHolder.imageHead);
+                    String name = map.get("name");
+                    headViewHolder.textCity.setText(name);
+
+
+                }
+
+
+                break;
+            case 1:
+                TwoViewHolder twoViewHolder = (TwoViewHolder) holder;
+//                Object object1 = cityBean.getData().getList().get(2).getContent();
+//                if (object1 instanceof List){
+//
+//                }
+
+                twoViewHolder.gridView.setAdapter(twoViewHolder.twoViewHolderAdapter);
+
+                break;
         }
     }
+
+    @Override
+    public int getItemCount() {
+        return 1;
+    }
+
+    class HeadViewHolder extends RecyclerView.ViewHolder{
+        private ImageView imageHead;
+        private TextView textCity;
+
+
+        public HeadViewHolder(View itemView) {
+            super(itemView);
+            imageHead = (ImageView) itemView.findViewById(R.id.item_head_imagview);
+            textCity = (TextView) itemView.findViewById(R.id.item_head_city);
+        }
+    }
+    class TwoViewHolder extends RecyclerView.ViewHolder{
+        private TextView textNum;
+        private GridView gridView;
+        private TwoViewHolderAdapter twoViewHolderAdapter;
+
+        public TwoViewHolder(View itemView) {
+            super(itemView);
+            gridView = (GridView) itemView.findViewById(R.id.item_city_gridview);
+            textNum = (TextView) itemView.findViewById(R.id.item_two_num);
+            twoViewHolderAdapter = new TwoViewHolderAdapter(context);
+            gridView.setAdapter(twoViewHolderAdapter);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

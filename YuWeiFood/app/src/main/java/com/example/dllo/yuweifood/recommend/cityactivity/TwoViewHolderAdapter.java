@@ -1,4 +1,4 @@
-package com.example.dllo.yuweifood.recommend;         /*
+package com.example.dllo.yuweifood.recommend.cityactivity;         /*
                                 MMMMM
                                   MMMMMM
                                     MMMMMMM
@@ -134,49 +134,50 @@ package com.example.dllo.yuweifood.recommend;         /*
         */
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
-import com.example.dllo.yuweifood.recommend.cityactivity.CityActivity;
-import com.example.dllo.yuweifood.tool.Values;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Map;
 
-
-public class HotCityAdapter extends BaseAdapter{
+public class TwoViewHolderAdapter extends BaseAdapter{
     private Context context;
+    private CityBean cityBean;
 
-
-    private List<ViewPagerBean> mbean;
-
-    public void setMbean(List<ViewPagerBean> mbean) {
-        this.mbean = mbean;
+    public TwoViewHolderAdapter(Context context) {
+        this.context = context;
     }
 
-    public HotCityAdapter(Context context) {
-        this.context = context;
+    public void setCityBean(CityBean cityBean) {
+        this.cityBean = cityBean;
     }
 
     @Override
     public int getCount() {
-        return mbean.size();
+        Object object = cityBean.getData().getList().get(2).getContent();
+        if (object instanceof List){
+            return ((List) object).size();
+
+        }
+        return 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return mbean.get(position);
+        Object object = cityBean.getData().getList().get(2).getContent();
+        if(object instanceof List){
+            List<Map<String,String>> list = (List<Map<String, String>>) object;
+            return list.get(position);
+        }
+        return null;
     }
 
     @Override
@@ -187,39 +188,36 @@ public class HotCityAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager_image_text, parent, false);
+        if (convertView == null){
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_grid_city,parent,false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        } else {
+        }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        Object object = cityBean.getData().getList().get(2).getContent();
+        if (object instanceof List){
+            List<Map<String, String>> values = (List<Map<String, String>>) object;
+            Glide.with(context).load(values.get(position).get("cover")).into(viewHolder.mImageView);
+            viewHolder.title.setText(values.get(position).get("name"));
+            viewHolder.sum.setText(values.get(position).get("sum"));
 
-        viewHolder.text_name.setText(mbean.get(position).getName());
-        viewHolder.text_summary.setText(mbean.get(position).getContent());
-        Glide.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
-        viewHolder.linearLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, CityActivity.class);
-                intent.putExtra("yayaya", Values.LaoTao_One);
-                context.startActivity(intent);
-            }
-        });
+        }
 
         return convertView;
     }
     class ViewHolder {
-        private TextView text_name,text_summary;
-        private ImageView image_cover;
-        private LinearLayout linearLayout;
-        public ViewHolder(View view) {
-            super();
 
-            text_name = (TextView) view.findViewById(R.id.item_recom_viewpager_text);
-            image_cover = (ImageView) view.findViewById(R.id.item_recom_viewpager_image);
-            text_summary = (TextView) view.findViewById(R.id.item_recom_viewpager_text_summary);
-            linearLayout = (LinearLayout) view.findViewById(R.id.city_linear_layout);
+        private ImageView mImageView;
+        private TextView title,sum;
+
+
+        public ViewHolder(View view) {
+
+            mImageView = (ImageView) view.findViewById(R.id.item_city_gridview_image);
+            title = (TextView) view.findViewById(R.id.item_city_gridview_title);
+            sum = (TextView) view.findViewById(R.id.item_city_gridview_sum);
+
         }
     }
 }

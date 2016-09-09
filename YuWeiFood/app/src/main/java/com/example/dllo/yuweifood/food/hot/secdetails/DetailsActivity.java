@@ -34,7 +34,7 @@ public class DetailsActivity extends BaseActivity {
     protected void initDate() {
 
         String str = getIntent().getStringExtra("url");
-        Log.d("==",str);
+
         mAdapter = new DetailsAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

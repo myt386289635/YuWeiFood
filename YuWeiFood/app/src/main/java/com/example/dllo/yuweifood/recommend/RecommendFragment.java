@@ -1,21 +1,12 @@
 package com.example.dllo.yuweifood.recommend;
 
-import android.content.ComponentName;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.dllo.yuweifood.OKHttp.NetTool;
-import com.example.dllo.yuweifood.mine.SignActivity;
 import com.example.dllo.yuweifood.tool.Values;
 import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
@@ -30,7 +21,8 @@ public class RecommendFragment extends BaseFragment {
     private RecommendAdapter recommendAdapter;
     private ViewPagerHeadAdapter viewPagerHeadAdapter;
     private HotCityViewPagerAdapter hotCityViewPagerAdapter;
-
+    //    private static final String STRING = Values.RecommendFragment_List_GoodFood;
+    private String string;
     private ViewPager viewPager, viewPager2;
     private View view1, view2, view3, view4;
 
@@ -65,6 +57,7 @@ public class RecommendFragment extends BaseFragment {
         listView.addHeaderView(view1);
 
     }
+
     @Override
     protected void initData() {
 

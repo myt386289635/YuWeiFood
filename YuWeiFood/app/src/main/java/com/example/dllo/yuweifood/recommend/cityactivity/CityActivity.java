@@ -1,4 +1,4 @@
-package com.example.dllo.yuweifood.recommend;         /*
+package com.example.dllo.yuweifood.recommend.cityactivity;         /*
                                 MMMMM
                                   MMMMMM
                                     MMMMMMM
@@ -133,93 +133,51 @@ package com.example.dllo.yuweifood.recommend;         /*
                                                         ------- To you.
         */
 
-import android.content.Context;
-import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.example.dllo.yuweifood.OKHttp.NetTool;
+import com.example.dllo.yuweifood.OKHttp.onHttpCallBack;
 import com.example.dllo.yuweifood.R;
-import com.example.dllo.yuweifood.recommend.cityactivity.CityActivity;
+import com.example.dllo.yuweifood.base.BaseActivity;
 import com.example.dllo.yuweifood.tool.Values;
-import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
-
-public class HotCityAdapter extends BaseAdapter{
-    private Context context;
-
-
-    private List<ViewPagerBean> mbean;
-
-    public void setMbean(List<ViewPagerBean> mbean) {
-        this.mbean = mbean;
-    }
-
-    public HotCityAdapter(Context context) {
-        this.context = context;
+public class CityActivity extends BaseActivity{
+    private RecyclerView recyclerView;
+    private CityAdapter cityAdapter;
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_city;
     }
 
     @Override
-    public int getCount() {
-        return mbean.size();
+    protected void initView() {
+        recyclerView = (RecyclerView) findViewById(R.id.activity_city_recycleview);
+
     }
 
     @Override
-    public Object getItem(int position) {
-        return mbean.get(position);
-    }
+    protected void initDate() {
+        String str = getIntent().getStringExtra("yayaya");
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        cityAdapter = new CityAdapter(this);
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_recom_viewpager_image_text, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        viewHolder.text_name.setText(mbean.get(position).getName());
-        viewHolder.text_summary.setText(mbean.get(position).getContent());
-        Glide.with(context).load(mbean.get(position).getImage()).into(viewHolder.image_cover);
-        viewHolder.linearLayout.setOnClickListener(new OnClickListener() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        NetTool.getInstance().startRequest(str, CityBean.class, new onHttpCallBack<CityBean>() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, CityActivity.class);
-                intent.putExtra("yayaya", Values.LaoTao_One);
-                context.startActivity(intent);
+            public void onSuccess(CityBean response) {
+                cityAdapter.setCityBean(response);
+
+                recyclerView.setAdapter(cityAdapter);
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
             }
         });
 
-        return convertView;
-    }
-    class ViewHolder {
-        private TextView text_name,text_summary;
-        private ImageView image_cover;
-        private LinearLayout linearLayout;
-        public ViewHolder(View view) {
-            super();
-
-            text_name = (TextView) view.findViewById(R.id.item_recom_viewpager_text);
-            image_cover = (ImageView) view.findViewById(R.id.item_recom_viewpager_image);
-            text_summary = (TextView) view.findViewById(R.id.item_recom_viewpager_text_summary);
-            linearLayout = (LinearLayout) view.findViewById(R.id.city_linear_layout);
-        }
     }
 }

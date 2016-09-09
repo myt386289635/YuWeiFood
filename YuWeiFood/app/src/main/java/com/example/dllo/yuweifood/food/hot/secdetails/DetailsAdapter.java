@@ -44,7 +44,6 @@ public class DetailsAdapter extends RecyclerView.Adapter {
         if (position == 0){
             return 0;
         }else {
-//            Log.d("--", "position:" + position);
             if(mBean.getData().getContent().get(position-1).getType().equals("text")){
                 return 1;
             }else {

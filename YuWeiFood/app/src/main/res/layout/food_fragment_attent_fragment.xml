@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="去余味大人榜看看更多的达人把!"
+            android:text="去余味达人榜看看更多的达人把!"
             android:textColor="#ffa12c"
             android:textSize="13sp"/>
 
