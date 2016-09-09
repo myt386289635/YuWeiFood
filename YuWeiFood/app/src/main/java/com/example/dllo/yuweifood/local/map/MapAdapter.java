@@ -1,16 +1,22 @@
 package com.example.dllo.yuweifood.local.map;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
+import com.example.dllo.yuweifood.food.hot.secdetails.DetailsActivity;
 import com.example.dllo.yuweifood.local.LocalBean;
+import com.example.dllo.yuweifood.local.rest.details.RestDetailsActivity;
+import com.example.dllo.yuweifood.tool.Values;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -54,7 +60,7 @@ public class MapAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ViewHodler hodler = null;
         if(convertView == null){
@@ -83,6 +89,15 @@ public class MapAdapter extends BaseAdapter {
             hodler.local.setText(values.get(position).get("km"));
         }
 
+        hodler.mLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, RestDetailsActivity.class);
+                intent.putExtra("str", Values.LocalFragment_map_item[position]);
+                mContext.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
 
@@ -91,6 +106,10 @@ public class MapAdapter extends BaseAdapter {
         private ImageView mImageView;
         private TextView name,content,local;
         private ImageView symbol;
+
+        private RelativeLayout mLayout;
+
+
         public ViewHodler(View view) {
 
             mImageView = (ImageView) view.findViewById(R.id.local_fragment_map_item_gridView_item_image);
@@ -98,6 +117,8 @@ public class MapAdapter extends BaseAdapter {
             content = (TextView) view.findViewById(R.id.local_fragment_map_item_gridView_item_content);
             local = (TextView) view.findViewById(R.id.local_fragment_map_item_gridView_item_local);
             symbol = (ImageView) view.findViewById(R.id.citymap_1);
+
+            mLayout = (RelativeLayout) view.findViewById(R.id.local_fragment_map_item_gridView_item_mlayout);
         }
     }
 

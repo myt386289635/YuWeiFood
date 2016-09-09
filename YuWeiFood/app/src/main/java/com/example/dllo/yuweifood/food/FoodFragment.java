@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.dllo.yuweifood.R;
 import com.example.dllo.yuweifood.base.BaseFragment;
+import com.example.dllo.yuweifood.food.Game.GameFragment;
 import com.example.dllo.yuweifood.food.attention.AttentFragment;
 import com.example.dllo.yuweifood.food.hot.HotFragment;
 import com.example.dllo.yuweifood.food.movie.MovieFragment;
@@ -45,6 +46,7 @@ public class FoodFragment extends BaseFragment {
         mFragments.add(new HotFragment());
         mFragments.add(new AttentFragment());
         mFragments.add(new MovieFragment());
+        mFragments.add(new GameFragment());
 
         mAdapter.setFragments(mFragments);
         mViewPager.setAdapter(mAdapter);

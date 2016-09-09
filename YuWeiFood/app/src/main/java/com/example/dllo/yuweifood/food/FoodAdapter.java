@@ -13,7 +13,7 @@ public class FoodAdapter extends FragmentPagerAdapter {
     private static final String TAG = "FoodAdapter --> ***********";
 
     private ArrayList<Fragment> mFragments;
-    private String[] titles = {"热门","关注","视频"};
+    private String[] titles = {"热门","关注","视频","玩一玩"};
 
     public void setFragments(ArrayList<Fragment> fragments) {
         mFragments = fragments;

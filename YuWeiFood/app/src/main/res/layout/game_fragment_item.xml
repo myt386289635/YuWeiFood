@@ -5,13 +5,10 @@
               android:layout_height="wrap_content"
     android:background="#ffffff">
 
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:id="@+id/activity_details_img_item_img"
+    <TextView
+        android:id="@+id/game_fragment_item_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"/>
+        android:layout_height="150dp"
+        android:background="@drawable/game"/>
 
 </LinearLayout>

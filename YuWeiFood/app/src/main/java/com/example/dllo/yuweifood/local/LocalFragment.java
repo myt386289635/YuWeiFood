@@ -1,8 +1,17 @@
 package com.example.dllo.yuweifood.local;
 
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnScrollChangeListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.dllo.yuweifood.OKHttp.NetTool;
 import com.example.dllo.yuweifood.tool.Values;
@@ -19,6 +28,10 @@ public class LocalFragment extends BaseFragment{
     private RecyclerView mRecyclerView;
     private LocalAdaapter mAdaapter;
 
+    private RelativeLayout mLayout;
+    private boolean loading = true;
+
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
     @Override
     protected int initLayout() {
         return R.layout.local_fragment;
@@ -28,6 +41,7 @@ public class LocalFragment extends BaseFragment{
     protected void initView(View view) {
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.local_fragment_recyclerView);
+        mLayout = (RelativeLayout) view.findViewById(R.id.local_fragment_mlayout);
     }
 
     @Override
@@ -47,11 +61,29 @@ public class LocalFragment extends BaseFragment{
 
             }
         });
+
+        //是否达到顶端.
+       mRecyclerView.setOnScrollListener(new OnVerticalScrollListener() {
+           @Override
+           public void onScrolledDown() {
+               mLayout.setBackgroundColor(0xaa000000);
+           }
+
+           @Override
+           public void onScrolledToTop() {
+               mLayout.setBackgroundColor(Color.TRANSPARENT);
+           }
+       });
+
+
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
 
     }
+
+
 }

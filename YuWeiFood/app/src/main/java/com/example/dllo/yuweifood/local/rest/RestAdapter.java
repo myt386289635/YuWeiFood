@@ -1,16 +1,22 @@
 package com.example.dllo.yuweifood.local.rest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
+import com.example.dllo.yuweifood.food.hot.secdetails.DetailsActivity;
 import com.example.dllo.yuweifood.local.LocalBean;
+import com.example.dllo.yuweifood.local.rest.details.RestDetailsActivity;
+import com.example.dllo.yuweifood.tool.Values;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -61,7 +67,7 @@ public class RestAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         Viewholder viewholder = null;
 
@@ -82,6 +88,14 @@ public class RestAdapter extends BaseAdapter{
             viewholder.price.setText(list.get(position).get("cost")+"元/人");
         }
 
+        viewholder.mLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, RestDetailsActivity.class);
+                intent.putExtra("str", Values.LocalFragment_rest_item[position]);
+                mContext.startActivity(intent);
+            }
+        });
         return convertView;
     }
 
@@ -89,12 +103,14 @@ public class RestAdapter extends BaseAdapter{
 
         private TextView title,content,price;
         private ImageView image;
+        private RelativeLayout mLayout;
 
         public Viewholder(View view) {
             title = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_name);
             content = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_content);
             price = (TextView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_price);
             image = (ImageView) view.findViewById(R.id.local_fragment_rest_item_gridview_item_image);
+            mLayout = (RelativeLayout) view.findViewById(R.id.local_fragment_rest_item_gridview_item_mLayout);
         }
     }
 }

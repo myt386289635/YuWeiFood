@@ -1,18 +1,23 @@
 package com.example.dllo.yuweifood.local.note;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dllo.yuweifood.R;
+import com.example.dllo.yuweifood.food.hot.secdetails.DetailsActivity;
 import com.example.dllo.yuweifood.local.LocalBean;
+import com.example.dllo.yuweifood.tool.Values;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,7 +68,7 @@ public class NoteAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         ViewHolder holder = null;
@@ -107,6 +112,16 @@ public class NoteAdapter extends BaseAdapter {
                 holder.userName.setText(autors.get("uname"));
             }
         }
+
+        holder.mLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailsActivity.class);
+                intent.putExtra("url", Values.LocalFragment_note_item[position]);
+                mContext.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
 
@@ -116,6 +131,8 @@ public class NoteAdapter extends BaseAdapter {
         private TextView content,date,userName;
         private ImageView userImage;
         private SimpleDateFormat simpleDateFormat;
+        private RelativeLayout mLayout;
+
 
         public ViewHolder(View  view) {
             mImageView = (ImageView) view.findViewById(R.id.local_fragment_note_item_gridview_item_image);
@@ -124,6 +141,8 @@ public class NoteAdapter extends BaseAdapter {
             userName = (TextView) view.findViewById(R.id.local_fragment_note_item_gridview_item_userName);
             userImage = (ImageView) view.findViewById(R.id.local_fragment_note_item_gridview_item_userImage);
             simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+
+            mLayout = (RelativeLayout) view.findViewById(R.id.local_fragment_note_item_gridview_item_mLayout);
         }
     }
 }
