@@ -20,6 +20,7 @@ public class DetailsActivity extends BaseActivity {
 
     @Override
     protected int setLayout() {
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
         return R.layout.activity_details;
     }
 
@@ -51,5 +52,11 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.activity_into, R.anim.activity_out);
     }
 }
